@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 8}
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -41,13 +41,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 373
-    height: 310
+    width: 231
+    height: 271
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 21}
+  m_ActualView: {fileID: 20}
   m_Panes:
-  - {fileID: 21}
+  - {fileID: 20}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &3
@@ -68,13 +68,13 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 637
-    width: 1540
-    height: 310
+    y: 676
+    width: 1318
+    height: 271
   m_MinSize: {x: 333, y: 271}
   m_MaxSize: {x: 14003, y: 10021}
   vertical: 0
-  controlID: 134
+  controlID: 128
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -90,15 +90,15 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1540
+    x: 1318
     y: 0
-    width: 380
+    width: 602
     height: 947
-  m_MinSize: {x: 276, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 15}
+  m_MinSize: {x: 275, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 16}
   m_Panes:
-  - {fileID: 15}
+  - {fileID: 16}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &5
@@ -116,19 +116,20 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 373
+    x: 231
     y: 0
-    width: 1167
-    height: 310
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 23}
+    width: 1087
+    height: 271
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 22}
   m_Panes:
-  - {fileID: 23}
+  - {fileID: 22}
   - {fileID: 19}
   - {fileID: 18}
+  - {fileID: 14}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 3
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -150,10 +151,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 609, y: 492}
-  m_MaxSize: {x: 18004, y: 14042}
+  m_MinSize: {x: 608, y: 492}
+  m_MaxSize: {x: 18003, y: 14042}
   vertical: 0
-  controlID: 171
+  controlID: 17
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -171,14 +172,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 270
-    height: 637
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 22}
+    width: 229
+    height: 676
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 21}
   m_Panes:
-  - {fileID: 22}
-  - {fileID: 20}
+  - {fileID: 21}
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &8
@@ -267,12 +267,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1540
+    width: 1318
     height: 947
   m_MinSize: {x: 333, y: 492}
   m_MaxSize: {x: 14003, y: 14042}
   vertical: 1
-  controlID: 61
+  controlID: 18
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -292,12 +292,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1540
-    height: 637
+    width: 1318
+    height: 676
   m_MinSize: {x: 303, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 62
+  controlID: 19
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -313,20 +313,178 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 270
+    x: 229
     y: 0
-    width: 1270
-    height: 637
+    width: 1089
+    height: 676
   m_MinSize: {x: 102, y: 121}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 14}
+  m_ActualView: {fileID: 15}
   m_Panes:
-  - {fileID: 16}
-  - {fileID: 14}
+  - {fileID: 15}
   - {fileID: 17}
-  m_Selected: 1
-  m_LastSelected: 2
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &14
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb55afc2c109f42f2af37941a8c9300e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 600, y: 300}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: GameBoardInputActions (Input Actions)
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 231
+    y: 749
+    width: 1085
+    height: 250
+  m_ViewDataDictionary: {fileID: 0}
+  m_ActionMapsTreeState:
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 29d7057e
+    m_LastClickedID: 2114311977
+    m_ExpandedIDs: 00000000
+    m_RenameOverlay:
+      m_UserAcceptedRename: 0
+      m_Name: 
+      m_OriginalName: 
+      m_EditFieldRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      m_UserData: 0
+      m_IsWaitingForDelay: 0
+      m_IsRenaming: 0
+      m_OriginalEventType: 11
+      m_IsRenamingFilename: 0
+      m_ClientGUIView: {fileID: 5}
+    m_SearchString: 
+  m_ActionsTreeState:
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: b34298ce
+    m_LastClickedID: -828882253
+    m_ExpandedIDs: bef2e56429d7057e
+    m_RenameOverlay:
+      m_UserAcceptedRename: 0
+      m_Name: 
+      m_OriginalName: 
+      m_EditFieldRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      m_UserData: 0
+      m_IsWaitingForDelay: 0
+      m_IsRenaming: 0
+      m_OriginalEventType: 11
+      m_IsRenamingFilename: 0
+      m_ClientGUIView: {fileID: 5}
+    m_SearchString: 
+  m_ControlPickerViewState:
+    m_AdvancedDropdownState:
+      states:
+      - itemId: 371857150
+        selectedIndex: -1
+        scroll: {x: 0, y: 0}
+      - itemId: 656259478
+        selectedIndex: 0
+        scroll: {x: 0, y: 0}
+    m_ManualPathEditMode: 0
+  m_ActionAssetManager:
+    m_AssetObjectForEditing: {fileID: 0}
+    m_ImportedAssetObject: {fileID: -944628639613478452, guid: 8891fd7f6a9ae954ca73d841873ff1ec,
+      type: 3}
+    m_AssetGUID: 8891fd7f6a9ae954ca73d841873ff1ec
+    m_ImportedAssetJson: "{\n    \"name\": \"GameBoardInputActions\",\n    \"maps\":
+      [\n        {\n            \"name\": \"Player\",\n            \"id\": \"ae8997b0-a38c-40e9-93b1-73bbfa9aa770\",\n           
+      \"actions\": [\n                {\n                    \"name\": \"MoveUp\",\n                   
+      \"type\": \"Button\",\n                    \"id\": \"fba8bd10-e04d-4fe2-a595-7f5ec073124c\",\n                   
+      \"expectedControlType\": \"Button\",\n                    \"processors\": \"\",\n                   
+      \"interactions\": \"\"\n                }\n            ],\n            \"bindings\":
+      [\n                {\n                    \"name\": \"\",\n                   
+      \"id\": \"d12c0699-b9b4-443a-b3aa-a6c3310b0710\",\n                    \"path\":
+      \"<Keyboard>/space\",\n                    \"interactions\": \"Press(behavior=1)\",\n                   
+      \"processors\": \"\",\n                    \"groups\": \"Keyboard&Mouse\",\n                   
+      \"action\": \"MoveUp\",\n                    \"isComposite\": false,\n                   
+      \"isPartOfComposite\": false\n                }\n            ]\n        }\n   
+      ],\n    \"controlSchemes\": [\n        {\n            \"name\": \"Keyboard&Mouse\",\n           
+      \"bindingGroup\": \"Keyboard&Mouse\",\n            \"devices\": [\n               
+      {\n                    \"devicePath\": \"<Keyboard>\",\n                   
+      \"isOptional\": false,\n                    \"isOR\": false\n               
+      },\n                {\n                    \"devicePath\": \"<Mouse>\",\n                   
+      \"isOptional\": false,\n                    \"isOR\": false\n               
+      }\n            ]\n        },\n        {\n            \"name\": \"Gamepad\",\n           
+      \"bindingGroup\": \"Gamepad\",\n            \"devices\": [\n               
+      {\n                    \"devicePath\": \"<Gamepad>\",\n                   
+      \"isOptional\": false,\n                    \"isOR\": false\n               
+      }\n            ]\n        },\n        {\n            \"name\": \"Touch\",\n           
+      \"bindingGroup\": \"Touch\",\n            \"devices\": [\n                {\n                   
+      \"devicePath\": \"<Touchscreen>\",\n                    \"isOptional\": false,\n                   
+      \"isOR\": false\n                }\n            ]\n        },\n        {\n           
+      \"name\": \"Joystick\",\n            \"bindingGroup\": \"Joystick\",\n           
+      \"devices\": [\n                {\n                    \"devicePath\": \"<Joystick>\",\n                   
+      \"isOptional\": false,\n                    \"isOR\": false\n               
+      }\n            ]\n        },\n        {\n            \"name\": \"XR\",\n           
+      \"bindingGroup\": \"XR\",\n            \"devices\": [\n                {\n                   
+      \"devicePath\": \"<XRController>\",\n                    \"isOptional\": false,\n                   
+      \"isOR\": false\n                }\n            ]\n        }\n    ]\n}"
+    m_IsDirty: 0
+  m_Toolbar:
+    m_IsDirty: 0
+    m_SelectedControlSchemeIndex: -1
+    m_SelectedDeviceRequirementIndex: -1
+    m_ControlSchemes:
+    - m_Name: Keyboard&Mouse
+      m_BindingGroup: Keyboard&Mouse
+      m_DeviceRequirements:
+      - m_ControlPath: <Keyboard>
+        m_Flags: 0
+      - m_ControlPath: <Mouse>
+        m_Flags: 0
+    - m_Name: Gamepad
+      m_BindingGroup: Gamepad
+      m_DeviceRequirements:
+      - m_ControlPath: <Gamepad>
+        m_Flags: 0
+    - m_Name: Touch
+      m_BindingGroup: Touch
+      m_DeviceRequirements:
+      - m_ControlPath: <Touchscreen>
+        m_Flags: 0
+    - m_Name: Joystick
+      m_BindingGroup: Joystick
+      m_DeviceRequirements:
+      - m_ControlPath: <Joystick>
+        m_Flags: 0
+    - m_Name: XR
+      m_BindingGroup: XR
+      m_DeviceRequirements:
+      - m_ControlPath: <XRController>
+        m_Flags: 0
+    m_SearchText: 
+  m_DirtyTitle:
+    m_Text: (*) GameBoardInputActions (Input Actions)
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  m_Title:
+    m_Text: GameBoardInputActions (Input Actions)
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+--- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -347,10 +505,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 270
+    x: 229
     y: 73
-    width: 1268
-    height: 616
+    width: 1087
+    height: 655
   m_ViewDataDictionary: {fileID: 0}
   m_ShowContextualTools: 0
   m_WindowGUID: fcab1a692bb152b4faa8aa3421c9d917
@@ -362,14 +520,14 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.35150608, y: 0.3299726, z: -0.48632812}
+    m_Target: {x: -0.08928489, y: -0.11131966, z: -5.357438}
     speed: 2
-    m_Value: {x: 0.35150608, y: 0.3299726, z: -0.48632812}
+    m_Value: {x: -0.08928489, y: -0.11131966, z: -5.357438}
   m_RenderMode: 0
   m_CameraMode:
-    drawMode: 0
-    name: Shaded
-    section: Shading Mode
+    drawMode: 31
+    name: Sprite Mask
+    section: Miscellaneous
   m_ValidateTrueMetals: 0
   m_DoValidateTrueMetals: 0
   m_ExposureSliderValue: 0
@@ -414,9 +572,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 14.86095
+    m_Target: 7.4886227
     speed: 2
-    m_Value: 14.221005
+    m_Value: 7.4886227
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -429,7 +587,7 @@ MonoBehaviour:
     m_EasingEnabled: 1
     m_EasingDuration: 0.4
     m_AccelerationEnabled: 1
-    m_FieldOfView: 90
+    m_FieldOfViewHorizontalOrVertical: 60
     m_NearClip: 0.03
     m_FarClip: 10000
     m_DynamicClip: 1
@@ -441,7 +599,7 @@ MonoBehaviour:
   m_SceneVisActive: 1
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
---- !u!114 &15
+--- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -462,9 +620,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1540
+    x: 1318
     y: 73
-    width: 379
+    width: 601
     height: 926
   m_ViewDataDictionary: {fileID: 0}
   m_OpenAddComponentMenu: 0
@@ -479,582 +637,6 @@ MonoBehaviour:
   m_PreviewWindow: {fileID: 0}
   m_LastInspectedObjectInstanceID: -1
   m_LastVerticalScrollValue: 0
---- !u!114 &16
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 13401, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: Test Runner
-    m_Image: {fileID: 0}
-    m_Tooltip: 
-  m_Pos:
-    serializedVersion: 2
-    x: 286
-    y: 73
-    width: 1353
-    height: 480
-  m_ViewDataDictionary: {fileID: 0}
-  m_Spl:
-    ID: 0
-    splitterInitialOffset: 0
-    currentActiveSplitter: -1
-    realSizes: 0000000000000000
-    relativeSizes:
-    - 0.75
-    - 0.25
-    minSizes: 2000000020000000
-    maxSizes: 0000000000000000
-    lastTotalSize: 0
-    splitSize: 6
-    xOffset: 0
-  m_TestTypeToolbarIndex: 0
-  m_PlayModeTestListGUI:
-    m_Window: {fileID: 16}
-    newResultList:
-    - id: 1005
-      uniqueId: '[SpaceRecettear][suite]'
-      name: SpaceRecettear
-      fullName: SpaceRecettear
-      resultStatus: 1
-      duration: 0.4396551
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 
-      parentUniqueId: 
-    - id: 1024
-      uniqueId: '[C:/Users/Hayden/Documents/GitHub/SpaceRecettear/SpaceRecettear/Library/ScriptAssemblies/Tests.dll][suite]'
-      name: Tests.dll
-      fullName: C:/Users/Hayden/Documents/GitHub/SpaceRecettear/SpaceRecettear/Library/ScriptAssemblies/Tests.dll
-      resultStatus: 1
-      duration: 0.3323838
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1005
-      parentUniqueId: '[SpaceRecettear][suite]'
-    - id: 1025
-      uniqueId: Tests.dll/[Tests][suite]
-      name: Tests
-      fullName: Tests
-      resultStatus: 1
-      duration: 0.2592325
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1024
-      parentUniqueId: '[C:/Users/Hayden/Documents/GitHub/SpaceRecettear/SpaceRecettear/Library/ScriptAssemblies/Tests.dll][suite]'
-    - id: 1006
-      uniqueId: Tests.dll/Tests/[Tests][Tests.PathfindingTests][suite]
-      name: PathfindingTests
-      fullName: Tests.PathfindingTests
-      resultStatus: 1
-      duration: 0.2064512
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1025
-      parentUniqueId: Tests.dll/[Tests][suite]
-    - id: 1008
-      uniqueId: Tests.dll/Tests/PathfindingTests/[Tests][Tests.PathfindingTests.PathfindingTestsWithEnumeratorPasses]
-      name: PathfindingTestsWithEnumeratorPasses
-      fullName: Tests.PathfindingTests.PathfindingTestsWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.0561959
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1006
-      parentUniqueId: Tests.dll/Tests/[Tests][Tests.PathfindingTests][suite]
-    - id: 1016
-      uniqueId: Tests.dll/Tests/PathfindingTests/[Tests][Tests.PathfindingTests.TestAdd]
-      name: TestAdd
-      fullName: Tests.PathfindingTests.TestAdd
-      resultStatus: 1
-      duration: 0.0150719
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1006
-      parentUniqueId: Tests.dll/Tests/[Tests][Tests.PathfindingTests][suite]
-    - id: 1017
-      uniqueId: Tests.dll/Tests/PathfindingTests/[Tests][Tests.PathfindingTests.TestAddMultipleRandom]
-      name: TestAddMultipleRandom
-      fullName: Tests.PathfindingTests.TestAddMultipleRandom
-      resultStatus: 1
-      duration: 0.0019361
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1006
-      parentUniqueId: Tests.dll/Tests/[Tests][Tests.PathfindingTests][suite]
-    - id: 1007
-      uniqueId: Tests.dll/Tests/PathfindingTests/[Tests][Tests.PathfindingTests.TestCellEquals]
-      name: TestCellEquals
-      fullName: Tests.PathfindingTests.TestCellEquals
-      resultStatus: 1
-      duration: 0.0006813
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1006
-      parentUniqueId: Tests.dll/Tests/[Tests][Tests.PathfindingTests][suite]
-    - id: 1009
-      uniqueId: Tests.dll/Tests/PathfindingTests/[Tests][Tests.PathfindingTests.TestConstructor1]
-      name: TestConstructor1
-      fullName: Tests.PathfindingTests.TestConstructor1
-      resultStatus: 1
-      duration: 0.0008841
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1006
-      parentUniqueId: Tests.dll/Tests/[Tests][Tests.PathfindingTests][suite]
-    - id: 1010
-      uniqueId: Tests.dll/Tests/PathfindingTests/[Tests][Tests.PathfindingTests.TestConstructor2]
-      name: TestConstructor2
-      fullName: Tests.PathfindingTests.TestConstructor2
-      resultStatus: 1
-      duration: 0.0121596
-      messages: 
-      output: "{\n { 4}\n { 4}\n { 5}\n { 8}\n { 5}\n { 7}\r\n"
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1006
-      parentUniqueId: Tests.dll/Tests/[Tests][Tests.PathfindingTests][suite]
-    - id: 1011
-      uniqueId: Tests.dll/Tests/PathfindingTests/[Tests][Tests.PathfindingTests.TestConstructor2Array]
-      name: TestConstructor2Array
-      fullName: Tests.PathfindingTests.TestConstructor2Array
-      resultStatus: 1
-      duration: 0.003931
-      messages: 
-      output: "{\n { 4}\n { 4}\n { 5}\n { 8}\n { 5}\n { 7}\r\n"
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1006
-      parentUniqueId: Tests.dll/Tests/[Tests][Tests.PathfindingTests][suite]
-    - id: 1012
-      uniqueId: Tests.dll/Tests/PathfindingTests/[Tests][Tests.PathfindingTests.TestConstructor2WithCells]
-      name: TestConstructor2WithCells
-      fullName: Tests.PathfindingTests.TestConstructor2WithCells
-      resultStatus: 1
-      duration: 0.0211243
-      messages: 
-      output: "{\n { (Position: (10.0, 10.0, 0.0), Weight: 0)}\n { (Position: (9.0,
-        8.0, 0.0), Weight: 2.2360680103302)}\n { (Position: (7.0, 8.0, 0.0), Weight:
-        3.60555124282837)}\n { (Position: (3.0, 8.0, 0.0), Weight: 7.28010988235474)}\n{
-        (Position: (3.0, 2.0, 0.0), Weight: 10.6301460266113)}\n { (Position: (1.0,
-        2.0, 0.0), Weight: 12.0415945053101)}\n { (Position: (13.0, 13.0, 0.0), Weight:
-        4.24264049530029)}\n { (Position: (20.0, 20.0, 0.0), Weight: 14.1421356201172)}\n{
-        (Position: (1.0, 1.0, 0.0), Weight: 12.7279224395752)}\r\n"
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1006
-      parentUniqueId: Tests.dll/Tests/[Tests][Tests.PathfindingTests][suite]
-    - id: 1013
-      uniqueId: Tests.dll/Tests/PathfindingTests/[Tests][Tests.PathfindingTests.TestConstructor2WithCells2]
-      name: TestConstructor2WithCells2
-      fullName: Tests.PathfindingTests.TestConstructor2WithCells2
-      resultStatus: 1
-      duration: 0.0042323
-      messages: 
-      output: "{\n { (Position: (10.0, 10.0, 0.0), Weight: 0)}\n { (Position: (9.0,
-        8.0, 0.0), Weight: 2.2360680103302)}\n { (Position: (7.0, 8.0, 0.0), Weight:
-        3.60555124282837)}\n { (Position: (3.0, 8.0, 0.0), Weight: 7.28010988235474)}\n{
-        (Position: (3.0, 2.0, 0.0), Weight: 10.6301460266113)}\n { (Position: (1.0,
-        2.0, 0.0), Weight: 12.0415945053101)}\n { (Position: (13.0, 13.0, 0.0), Weight:
-        4.24264049530029)}\n { (Position: (20.0, 20.0, 0.0), Weight: 14.1421356201172)}\n{
-        (Position: (1.0, 1.0, 0.0), Weight: 12.7279224395752)}\r\n"
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1006
-      parentUniqueId: Tests.dll/Tests/[Tests][Tests.PathfindingTests][suite]
-    - id: 1014
-      uniqueId: Tests.dll/Tests/PathfindingTests/[Tests][Tests.PathfindingTests.TestConstructor3]
-      name: TestConstructor3
-      fullName: Tests.PathfindingTests.TestConstructor3
-      resultStatus: 1
-      duration: 0.0008634
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1006
-      parentUniqueId: Tests.dll/Tests/[Tests][Tests.PathfindingTests][suite]
-    - id: 1015
-      uniqueId: Tests.dll/Tests/PathfindingTests/[Tests][Tests.PathfindingTests.TestConstructor3WithCells]
-      name: TestConstructor3WithCells
-      fullName: Tests.PathfindingTests.TestConstructor3WithCells
-      resultStatus: 1
-      duration: 0.0005401
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1006
-      parentUniqueId: Tests.dll/Tests/[Tests][Tests.PathfindingTests][suite]
-    - id: 1018
-      uniqueId: Tests.dll/Tests/PathfindingTests/[Tests][Tests.PathfindingTests.TestRemove]
-      name: TestRemove
-      fullName: Tests.PathfindingTests.TestRemove
-      resultStatus: 1
-      duration: 0.0012673
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1006
-      parentUniqueId: Tests.dll/Tests/[Tests][Tests.PathfindingTests][suite]
-    - id: 1020
-      uniqueId: Tests.dll/Tests/PathfindingTests/[Tests][Tests.PathfindingTests.TestRemoveMin]
-      name: TestRemoveMin
-      fullName: Tests.PathfindingTests.TestRemoveMin
-      resultStatus: 1
-      duration: 0.0010157
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1006
-      parentUniqueId: Tests.dll/Tests/[Tests][Tests.PathfindingTests][suite]
-    - id: 1021
-      uniqueId: Tests.dll/Tests/PathfindingTests/[Tests][Tests.PathfindingTests.TestRemoveMinLeavesValidHeap]
-      name: TestRemoveMinLeavesValidHeap
-      fullName: Tests.PathfindingTests.TestRemoveMinLeavesValidHeap
-      resultStatus: 1
-      duration: 0.0072451
-      messages: 
-      output: "{\n { (Position: (10.0, 10.0, 0.0), Weight: 0)}\n { (Position: (9.0,
-        8.0, 0.0), Weight: 2.2360680103302)}\n { (Position: (7.0, 8.0, 0.0), Weight:
-        3.60555124282837)}\n { (Position: (3.0, 8.0, 0.0), Weight: 7.28010988235474)}\n{
-        (Position: (3.0, 2.0, 0.0), Weight: 10.6301460266113)}\n { (Position: (1.0,
-        2.0, 0.0), Weight: 12.0415945053101)}\n { (Position: (13.0, 13.0, 0.0), Weight:
-        4.24264049530029)}\n { (Position: (20.0, 20.0, 0.0), Weight: 14.1421356201172)}\n{
-        (Position: (1.0, 1.0, 0.0), Weight: 12.7279224395752)}\r\n{\n { (Position:
-        (9.0, 8.0, 0.0), Weight: 2.2360680103302)}\n { (Position: (3.0, 8.0, 0.0),
-        Weight: 7.28010988235474)}\n { (Position: (7.0, 8.0, 0.0), Weight: 3.60555124282837)}\n{
-        (Position: (1.0, 1.0, 0.0), Weight: 12.7279224395752)}\n { (Position: (3.0,
-        2.0, 0.0), Weight: 10.6301460266113)}\n { (Position: (1.0, 2.0, 0.0), Weight:
-        12.0415945053101)}\n { (Position: (13.0, 13.0, 0.0), Weight: 4.24264049530029)}\n{
-        (Position: (20.0, 20.0, 0.0), Weight: 14.1421356201172)}\r\n"
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1006
-      parentUniqueId: Tests.dll/Tests/[Tests][Tests.PathfindingTests][suite]
-    - id: 1022
-      uniqueId: Tests.dll/Tests/PathfindingTests/[Tests][Tests.PathfindingTests.TestRemoveMinMultipleTimes]
-      name: TestRemoveMinMultipleTimes
-      fullName: Tests.PathfindingTests.TestRemoveMinMultipleTimes
-      resultStatus: 1
-      duration: 0.0086481
-      messages: 
-      output: "Start heap: {\n { (Position: (10.0, 10.0, 0.0), Weight: 0)}\n { (Position:
-        (9.0, 8.0, 0.0), Weight: 2.2360680103302)}\n { (Position: (7.0, 8.0, 0.0),
-        Weight: 3.60555124282837)}\n { (Position: (3.0, 8.0, 0.0), Weight: 7.28010988235474)}\n{
-        (Position: (3.0, 2.0, 0.0), Weight: 10.6301460266113)}\n { (Position: (1.0,
-        2.0, 0.0), Weight: 12.0415945053101)}\n { (Position: (13.0, 13.0, 0.0), Weight:
-        4.24264049530029)}\n { (Position: (20.0, 20.0, 0.0), Weight: 14.1421356201172)}\n{
-        (Position: (1.0, 1.0, 0.0), Weight: 12.7279224395752)}\r\nFirst RemoveMin:
-        {\n { (Position: (9.0, 8.0, 0.0), Weight: 2.2360680103302)}\n { (Position:
-        (3.0, 8.0, 0.0), Weight: 7.28010988235474)}\n { (Position: (7.0, 8.0, 0.0),
-        Weight: 3.60555124282837)}\n { (Position: (1.0, 1.0, 0.0), Weight: 12.7279224395752)}\n{
-        (Position: (3.0, 2.0, 0.0), Weight: 10.6301460266113)}\n { (Position: (1.0,
-        2.0, 0.0), Weight: 12.0415945053101)}\n { (Position: (13.0, 13.0, 0.0), Weight:
-        4.24264049530029)}\n { (Position: (20.0, 20.0, 0.0), Weight: 14.1421356201172)}\r\nSecond
-        RemoveMin: {\n { (Position: (7.0, 8.0, 0.0), Weight: 3.60555124282837)}\n{
-        (Position: (3.0, 8.0, 0.0), Weight: 7.28010988235474)}\n { (Position: (20.0,
-        20.0, 0.0), Weight: 14.1421356201172)}\n { (Position: (1.0, 1.0, 0.0), Weight:
-        12.7279224395752)}\n { (Position: (3.0, 2.0, 0.0), Weight: 10.6301460266113)}\n{
-        (Position: (1.0, 2.0, 0.0), Weight: 12.0415945053101)}\n { (Position: (13.0,
-        13.0, 0.0), Weight: 4.24264049530029)}\r\n"
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1006
-      parentUniqueId: Tests.dll/Tests/[Tests][Tests.PathfindingTests][suite]
-    - id: 1023
-      uniqueId: Tests.dll/Tests/PathfindingTests/[Tests][Tests.PathfindingTests.TestRemoveMinOnEmpty]
-      name: TestRemoveMinOnEmpty
-      fullName: Tests.PathfindingTests.TestRemoveMinOnEmpty
-      resultStatus: 1
-      duration: 0.0019927
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1006
-      parentUniqueId: Tests.dll/Tests/[Tests][Tests.PathfindingTests][suite]
-    - id: 1019
-      uniqueId: Tests.dll/Tests/PathfindingTests/[Tests][Tests.PathfindingTests.TestRemoveNonExistant]
-      name: TestRemoveNonExistant
-      fullName: Tests.PathfindingTests.TestRemoveNonExistant
-      resultStatus: 1
-      duration: 0.0006064
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1006
-      parentUniqueId: Tests.dll/Tests/[Tests][Tests.PathfindingTests][suite]
-    m_ResultText: "TestConstructor2WithCells (0.021s)\n---\n{\n { (Position: (10.0,
-      10.0, 0.0), Weight: 0)}\n { (Position: (9.0, 8.0, 0.0), Weight: 2.2360680103302)}\n{
-      (Position: (7.0, 8.0, 0.0), Weight: 3.60555124282837)}\n { (Position: (3.0,
-      8.0, 0.0), Weight: 7.28010988235474)}\n { (Position: (3.0, 2.0, 0.0), Weight:
-      10.6301460266113)}\n { (Position: (1.0, 2.0, 0.0), Weight: 12.0415945053101)}\n{
-      (Position: (13.0, 13.0, 0.0), Weight: 4.24264049530029)}\n { (Position: (20.0,
-      20.0, 0.0), Weight: 14.1421356201172)}\n { (Position: (1.0, 1.0, 0.0), Weight:
-      12.7279224395752)}"
-    m_ResultStacktrace: 
-    m_TestListState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: ccb7b329
-      m_LastClickedID: 699643852
-      m_ExpandedIDs: f1fe0a2c579cba328359db41056da86affffff7f
-      m_RenameOverlay:
-        m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
-        m_EditFieldRect:
-          serializedVersion: 2
-          x: 0
-          y: 0
-          width: 0
-          height: 0
-        m_UserData: 0
-        m_IsWaitingForDelay: 0
-        m_IsRenaming: 0
-        m_OriginalEventType: 11
-        m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 0}
-      m_SearchString: 
-    m_TestRunnerUIFilter:
-      PassedHidden: 0
-      FailedHidden: 0
-      NotRunHidden: 0
-      m_SearchString: 
-      selectedCategoryMask: 0
-      availableCategories:
-      - Uncategorized
-  m_EditModeTestListGUI:
-    m_Window: {fileID: 16}
-    newResultList:
-    - id: 1000
-      uniqueId: '[SpaceRecettear][suite]'
-      name: SpaceRecettear
-      fullName: SpaceRecettear
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 
-      parentUniqueId: 
-    - id: 1003
-      uniqueId: '[C:/Users/Hayden/Documents/GitHub/SpaceRecettear/SpaceRecettear/Library/ScriptAssemblies/Unity.2D.Tilemap.Extras.Placeholder.EditorTests.dll][suite]'
-      name: Unity.2D.Tilemap.Extras.Placeholder.EditorTests.dll
-      fullName: C:/Users/Hayden/Documents/GitHub/SpaceRecettear/SpaceRecettear/Library/ScriptAssemblies/Unity.2D.Tilemap.Extras.Placeholder.EditorTests.dll
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1000
-      parentUniqueId: '[SpaceRecettear][suite]'
-    - id: 1001
-      uniqueId: Unity.2D.Tilemap.Extras.Placeholder.EditorTests.dll/[Unity.2D.Tilemap.Extras.Placeholder.EditorTests][U2DExtrasPlaceholder][suite]
-      name: U2DExtrasPlaceholder
-      fullName: U2DExtrasPlaceholder
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1003
-      parentUniqueId: '[C:/Users/Hayden/Documents/GitHub/SpaceRecettear/SpaceRecettear/Library/ScriptAssemblies/Unity.2D.Tilemap.Extras.Placeholder.EditorTests.dll][suite]'
-    - id: 1002
-      uniqueId: Unity.2D.Tilemap.Extras.Placeholder.EditorTests.dll/U2DExtrasPlaceholder/[Unity.2D.Tilemap.Extras.Placeholder.EditorTests][U2DExtrasPlaceholder.PlaceHolderTest]
-      name: PlaceHolderTest
-      fullName: U2DExtrasPlaceholder.PlaceHolderTest
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1001
-      parentUniqueId: Unity.2D.Tilemap.Extras.Placeholder.EditorTests.dll/[Unity.2D.Tilemap.Extras.Placeholder.EditorTests][U2DExtrasPlaceholder][suite]
-    m_ResultText: 
-    m_ResultStacktrace: 
-    m_TestListState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 50fda2a627e010c6f1fe0a2cffffff7f
-      m_RenameOverlay:
-        m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
-        m_EditFieldRect:
-          serializedVersion: 2
-          x: 0
-          y: 0
-          width: 0
-          height: 0
-        m_UserData: 0
-        m_IsWaitingForDelay: 0
-        m_IsRenaming: 0
-        m_OriginalEventType: 11
-        m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 0}
-      m_SearchString: 
-    m_TestRunnerUIFilter:
-      PassedHidden: 0
-      FailedHidden: 0
-      NotRunHidden: 0
-      m_SearchString: 
-      selectedCategoryMask: 0
-      availableCategories:
-      - Uncategorized
 --- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1076,22 +658,25 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 270
+    x: 229
     y: 73
-    width: 1268
-    height: 616
+    width: 1087
+    height: 655
   m_ViewDataDictionary: {fileID: 0}
-  m_SerializedViewsNames: []
-  m_SerializedViewsValues: []
+  m_SerializedViewNames: []
+  m_SerializedViewValues: []
+  m_SerializedCustomFieldsNames: []
+  m_SerializedCustomFieldsValues: []
   m_PlayModeViewName: GameView
   m_ShowGizmos: 1
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1058, y: 595}
+  m_TargetSize: {x: 1087, y: 611}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
   m_MaximizeOnPlay: 0
+  m_UseMipMap: 0
   m_VSyncEnabled: 0
   m_Gizmos: 1
   m_Stats: 0
@@ -1101,10 +686,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -547.5
-    m_HBaseRangeMax: 547.5
-    m_VBaseRangeMin: -308
-    m_VBaseRangeMax: 308
+    m_HBaseRangeMin: -543.5
+    m_HBaseRangeMax: 543.5
+    m_VBaseRangeMin: -305.5
+    m_VBaseRangeMax: 305.5
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -1121,24 +706,24 @@ MonoBehaviour:
     m_DrawArea:
       serializedVersion: 2
       x: 0
-      y: 0
-      width: 1268
-      height: 616
+      y: 21
+      width: 1087
+      height: 634
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 634, y: 308}
+    m_Translation: {x: 543.5, y: 317}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -634
-      y: -308
-      width: 1268
-      height: 616
+      x: -543.5
+      y: -317
+      width: 1087
+      height: 634
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 1268, y: 616}
+  m_LastWindowPixelSize: {x: 1087, y: 655}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -1172,7 +757,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -1480
+  m_LastSelectedObjectID: 15162
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1245,37 +830,6 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f683d99f24875748a6656966ca9cea0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MinSize: {x: 240, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: Tile Palette
-    m_Image: {fileID: 0}
-    m_Tooltip: 
-  m_Pos:
-    serializedVersion: 2
-    x: 0
-    y: 73
-    width: 287
-    height: 480
-  m_ViewDataDictionary: {fileID: 0}
-  m_PreviewResizer:
-    m_CachedPref: 74
-    m_ControlHash: 1964396721
-    m_PrefName: Preview_TilemapBrushInspector
-  m_Palette: {fileID: 8751981455376142708, guid: 5a8cb8e57263fdc428154adf33f591a4,
-    type: 3}
---- !u!114 &21
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12014, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
@@ -1290,9 +844,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 710
-    width: 372
-    height: 289
+    y: 749
+    width: 230
+    height: 250
   m_ViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
@@ -1313,14 +867,14 @@ MonoBehaviour:
   m_LastFolders:
   - Assets
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: C:\Users\Hayden\Documents\GitHub\Panel De Pon\PanelProject
+  m_LastProjectPath: C:\Users\Hayden\Documents\PDPProject\PanelProject
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: d8470000
-    m_LastClickedID: 18392
-    m_ExpandedIDs: 00000000d847000000ca9a3b
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: a83b0000
+    m_LastClickedID: 15272
+    m_ExpandedIDs: 00000000a83b0000aa3b0000ac3b0000ae3b0000b03b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1348,7 +902,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 
+    m_ExpandedIDs: 00000000a83b0000aa3b0000ac3b0000ae3b0000b03b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1376,7 +930,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000ac370000782f0000ee6b0000046c0000e0670000e63e000000000000bc6f000006470000b6330000f03b000074560000743800001c380000923e0000363d0000
+    m_ExpandedInstanceIDs: c6230000ac370000782f0000ee6b0000046c0000e0670000e63e000000000000bc6f000006470000b6330000f03b000074560000743800001c380000923e0000363d00004e3c00001e390000ce3a0000d63e0000da3e00004a500000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1403,8 +957,8 @@ MonoBehaviour:
     m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 16
   m_SkipHiddenPackages: 0
-  m_DirectoriesAreaWidth: 129
---- !u!114 &22
+  m_DirectoriesAreaWidth: 110
+--- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1427,15 +981,15 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73
-    width: 269
-    height: 616
+    width: 228
+    height: 655
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 9a600000
-      m_LastClickedID: 0
-      m_ExpandedIDs: f4faffff
+      m_SelectedIDs: 403b0000
+      m_LastClickedID: 15168
+      m_ExpandedIDs: 5afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1459,7 +1013,7 @@ MonoBehaviour:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
   m_WindowGUID: fa9686b60090ea547b36358602e2212e
---- !u!114 &23
+--- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1480,8 +1034,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 373
-    y: 710
-    width: 1165
-    height: 289
+    x: 231
+    y: 749
+    width: 1085
+    height: 250
   m_ViewDataDictionary: {fileID: 0}
