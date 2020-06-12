@@ -10,8 +10,9 @@ public class BoardController : MonoBehaviour
     public int xSize, ySize;
     public int startingHeight;
 
-    private GameObject[,] panels;
+    private List<List<GameObject>> panels;
     Vector2 offset;
+    int lastRow;
 
     public bool IsShifting { get; set; }
 
@@ -26,65 +27,49 @@ public class BoardController : MonoBehaviour
 
     private void CreateBoard(float xOffset, float yOffset)
     {
-        panels = new GameObject[xSize, ySize];
+        panels = new List<List<GameObject>>();
 
         float startX = transform.position.x;
         float startY = transform.position.y;
 
         for(int x = 0; x < xSize; x++)
         {
+            List<GameObject> newColumn = new List<GameObject>();
+            panels.Add(newColumn);
             for(int y = 0; y < ySize; y++)
             {
-                if (y < startingHeight)
+                GameObject newPanel = Instantiate(panel,
+                    new Vector3(startX + (xOffset * x), startY + (yOffset * y)),
+                    panel.transform.rotation,
+                    this.transform);
+                panels[x].Add(newPanel);
+                var spriteRenderer = newPanel.GetComponent<SpriteRenderer>();
+                if (y > startingHeight)
                 {
-                    GameObject newPanel = Instantiate(panel,
-                                new Vector3(startX + (xOffset * x), startY + (yOffset * y)),
-                                panel.transform.rotation,
-                                this.transform);
-                    panels[x, y] = newPanel; 
-                }
-                else
-                {
-                    panels[x, y] = null;
+                    spriteRenderer.sprite = null;
                 }
             }
         }
+        lastRow = -1;
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void CreateNewRow(InputAction.CallbackContext ctx)
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        if (ctx.performed)
         {
-            CreateNewRow();
-        }
-    }
+            float startX = transform.position.x;
+            float startY = transform.position.y;
 
-    public void CreateNewRow()
-    {
-        if (MoveUp())
-        {
-        }
-    }
-
-    /// <summary>
-    /// Atempts to move all of the panels up one row. If it cant, it sets the lose condition and returns false.
-    /// </summary>
-    /// <returns></returns>    
-    public bool MoveUp()
-    {
-        Debug.Log("Moving panels up");
-        for (int x = xSize - 1; x >= 0; x--)
-        {
-            for (int y = ySize - 1; y >= 0 ; y--)
+            for (int x = 0; x < xSize; x++)
             {
-                if(panels[x,y] == null) { continue; }
-                if(y >= ySize) { return false; }//TODO need to test this
-                Vector3 originalPosition = panels[x, y].transform.position;
-                panels[x, y].transform.position = new Vector3(originalPosition.x, originalPosition.y + offset.y);
-                panels[x, y + 1] = panels[x, y];//Move it up one block
+                GameObject newPanel = Instantiate(panel,
+                        new Vector3(startX + (offset.x * x), startY + (offset.y * lastRow)),
+                        panel.transform.rotation,
+                        this.transform);
+                panels[x].Add(newPanel);
             }
+            lastRow -= 1; 
         }
-        return true;
     }
+
 }
