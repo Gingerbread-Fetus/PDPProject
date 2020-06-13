@@ -20,13 +20,14 @@ public class CameraController : MonoBehaviour
         if (moving)
         {
             goal = transform.position - new Vector3(0, 1, 0);
+            float step = moveSpeed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, goal, step);
         }
-        float step = moveSpeed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, goal, step);
 
         if (Keyboard.current.sKey.wasPressedThisFrame)
         {
             moving = false;//TODO probably going to remove this later, but thought it made a good case for testing.
         }
+                
     }
 }
