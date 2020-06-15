@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -239,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439869e6da474e34facb58053cac09be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moving: 1
+  moving: 0
   moveSpeed: 0.5
 --- !u!20 &519420031
 Camera:
@@ -300,6 +301,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49b4cc203aa6414fae5c798d1d0e7d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &1116049184
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,7 +343,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116049184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.33, y: -6.25, z: 2.13}
+  m_LocalPosition: {x: -2.33, y: -2.6, z: 2.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -345,13 +362,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterPanels:
-  - {fileID: 612942213297561827, guid: a40ba4da82f47e5458ee727e563f6028, type: 3}
-  - {fileID: 612942213297561827, guid: 2303e479b7b58634d997d38d2bb6d6ba, type: 3}
-  - {fileID: 612942213297561827, guid: 2c3c0ec286afa3543880e8e868539679, type: 3}
-  - {fileID: 612942213297561827, guid: 80d0e0beddbed334580bf24a4190b519, type: 3}
-  - {fileID: 612942213297561827, guid: 157fd94be95cc924ea5abc45245cef8b, type: 3}
-  - {fileID: 612942213297561827, guid: f5cf9aa1d4e50934084fdc473f2cc21b, type: 3}
-  characters: []
+  - {fileID: 4505430241619664015, guid: a40ba4da82f47e5458ee727e563f6028, type: 3}
+  - {fileID: 4505430241619664015, guid: 2303e479b7b58634d997d38d2bb6d6ba, type: 3}
+  - {fileID: 4505430241619664015, guid: 2c3c0ec286afa3543880e8e868539679, type: 3}
+  - {fileID: 4505430241619664015, guid: 80d0e0beddbed334580bf24a4190b519, type: 3}
+  - {fileID: 4505430241619664015, guid: 157fd94be95cc924ea5abc45245cef8b, type: 3}
+  - {fileID: 4505430241619664015, guid: f5cf9aa1d4e50934084fdc473f2cc21b, type: 3}
   xSize: 6
   ySize: 12
   startingHeight: 5

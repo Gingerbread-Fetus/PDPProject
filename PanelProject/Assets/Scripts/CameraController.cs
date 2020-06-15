@@ -28,6 +28,5 @@ public class CameraController : MonoBehaviour
         {
             moving = false;//TODO probably going to remove this later, but thought it made a good case for testing.
         }
-                
     }
 }
