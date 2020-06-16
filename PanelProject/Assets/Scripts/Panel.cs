@@ -95,14 +95,7 @@ public class Panel : MonoBehaviour
         {
             hit = hitArray[1];//Because the object will always collide with itself on this raycast.
             Debug.DrawRay(transform.position, castDir, Color.red, 5.4f);
-            Debug.Log(
-                "Raycast from: " + transform.position +
-                " Called by: " + this.gameObject.name +
-                " Towards: " + castDir +
-                " Panel type: " + Enum.GetName(typeof(PanelType), type) +
-                " Collider hit: " + hit.collider.name +
-                " Hit it's own collider?: " + hit.collider.Equals(this.GetComponent<BoxCollider2D>())
-            );//Checking if the objects are hitting their own colliders
+            
             while (hitArray.Length > 1 && hit.collider.GetComponent<Panel>().Type == this.Type)
             {
                 matchingPanels.Add(hit.collider.gameObject);

@@ -26,7 +26,12 @@ public class CameraController : MonoBehaviour
 
         if (Keyboard.current.sKey.wasPressedThisFrame)
         {
-            moving = false;//TODO probably going to remove this later, but thought it made a good case for testing.
+            moving = !moving;//TODO probably going to change this later, but thought it made a good case for testing.
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        FindObjectOfType<BoardController>().CreateNewRow();
     }
 }

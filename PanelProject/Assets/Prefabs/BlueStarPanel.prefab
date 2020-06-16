@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 612942213297561821}
   - component: {fileID: 1468587740924406281}
   - component: {fileID: 4505430241619664015}
+  - component: {fileID: -3011189280115908946}
   m_Layer: 0
   m_Name: BlueStarPanel
   m_TagString: Panel
@@ -94,7 +95,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -125,6 +126,27 @@ MonoBehaviour:
   type: 0
   backgroundSprite: {fileID: 612942213297561821}
   characterSprite: {fileID: 7048823241534510603}
+--- !u!50 &-3011189280115908946
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612942213297561827}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8347228422690998389
 GameObject:
   m_ObjectHideFlags: 0
