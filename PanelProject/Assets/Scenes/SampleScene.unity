@@ -443,10 +443,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5, y: 0}
+  m_Offset: {x: 0, y: 6}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -457,7 +457,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 6.16, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &1116049184
 GameObject:
@@ -485,7 +485,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116049184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.33, y: -2.6, z: 2.13}
+  m_LocalPosition: {x: -2.33, y: 4.9, z: 2.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -511,7 +511,7 @@ MonoBehaviour:
   - {fileID: 4505430241619664015, guid: 157fd94be95cc924ea5abc45245cef8b, type: 3}
   - {fileID: 4505430241619664015, guid: f5cf9aa1d4e50934084fdc473f2cc21b, type: 3}
   xSize: 6
-  ySize: 6
+  ySize: 12
 --- !u!114 &1116049187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,18 +539,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1116049186}
-        m_MethodName: CreateNewRow
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: fba8bd10-e04d-4fe2-a595-7f5ec073124c
     m_ActionName: Player/MoveUp[/Keyboard/space]
   - m_PersistentCalls:

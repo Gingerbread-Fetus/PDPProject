@@ -23,9 +23,10 @@ public class Panel : MonoBehaviour
 
     public PanelType Type { get => type; set => type = value; }
     public int XGridPos { get => xGridPos; set => xGridPos = value; }
-    public int YGridPos { get => yGridPos; set => yGridPos = value; }
+    public SpriteRenderer BackgroundSprite { get => backgroundSprite; set => backgroundSprite = value; }
+    public SpriteRenderer CharacterSprite { get => characterSprite; set => characterSprite = value; }
 
-    int xGridPos, yGridPos = 0;
+    int xGridPos = 0;
     private Vector2[] adjacentDirections = new Vector2[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
     private bool matchFound = false;
 
@@ -41,13 +42,10 @@ public class Panel : MonoBehaviour
         int tempx, tempy;
         Vector3 tmpPosition = transform.position;
         tempx = xGridPos;
-        tempy = yGridPos;
 
         xGridPos = otherPanel.XGridPos;
-        yGridPos = otherPanel.YGridPos;
 
         otherPanel.XGridPos = tempx;
-        otherPanel.YGridPos = tempy;
 
         transform.position = otherPanel.transform.position;
         otherPanel.transform.position = tmpPosition;
@@ -134,11 +132,21 @@ public class Panel : MonoBehaviour
 
         ClearMatch(new Vector2[2] { Vector2.left, Vector2.right });
         ClearMatch(new Vector2[2] { Vector2.up, Vector2.down });
+
         if (matchFound)
         {
             SetToNull();
             matchFound = false;
             //TODO play sound effect
         }
+    }
+
+    public void SetType(Panel nextPanel)
+    {
+        type = nextPanel.Type;
+        backgroundSprite.color = nextPanel.backgroundSprite.color;
+        backgroundSprite.sprite = nextPanel.BackgroundSprite.sprite;
+        characterSprite.color = nextPanel.characterSprite.color;
+        characterSprite.sprite = nextPanel.CharacterSprite.sprite;
     }
 }

@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
 {
     public bool moving = true;
     public float moveSpeed = 1f;
+    int objectsEnteringCollider = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +33,14 @@ public class CameraController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        FindObjectOfType<BoardController>().CreateNewRow();
+        objectsEnteringCollider += 1;
+        BoardController bc = FindObjectOfType<BoardController>();
+        bc.MoveToBottom(collision.gameObject.GetComponent<Panel>());
+        if (objectsEnteringCollider == 6)
+        {
+            bc.LastRowPosition -= 1;
+            bc.LastRowSpawned += 1;
+            objectsEnteringCollider = 0;
+        }
     }
 }

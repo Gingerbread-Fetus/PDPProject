@@ -10,7 +10,6 @@ public class BoardController : MonoBehaviour
     public static BoardController instance;
     public int xSize, ySize;
 
-    private List<List<Panel>> panels;
     Panel selectedPanel = null;
     Vector2 offset;
     int lastRowPosition;
@@ -18,6 +17,8 @@ public class BoardController : MonoBehaviour
 
     public bool IsShifting { get; set; }
     public Panel SelectedPanel { get => selectedPanel; set => selectedPanel = value; }
+    public int LastRowPosition { get => lastRowPosition; set => lastRowPosition = value; }
+    public int LastRowSpawned { get => lastRowSpawned; set => lastRowSpawned = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,6 @@ public class BoardController : MonoBehaviour
 
     private void CreateBoard(float xOffset, float yOffset)
     {
-        panels = new List<List<Panel>>();
 
         float startX = transform.position.x;
         float startY = transform.position.y;
@@ -40,8 +40,6 @@ public class BoardController : MonoBehaviour
 
         for(int x = 0; x < xSize; x++)
         {
-            List<Panel> newColumn = new List<Panel>();
-            panels.Add(newColumn);
             for(int y = 0; y < ySize; y++)
             {
                 List<Panel> possiblePanels = new List<Panel>(characterPanels);
@@ -58,70 +56,25 @@ public class BoardController : MonoBehaviour
                 previousLeft[y] = newPanel.GetComponent<Panel>();
                 previousAbove = newPanel.GetComponent<Panel>();
                 newPanel.GetComponent<Panel>().XGridPos = x;
-                newPanel.GetComponent<Panel>().YGridPos = y;
-                panels[x].Add(newPanel);
             }
         }
-        lastRowPosition = -ySize;
-        lastRowSpawned = ySize;
+        LastRowPosition = -ySize;
+        LastRowSpawned = ySize;
     }
     
-    //Todo this code is the rough draft for adding a new row to the grid.
-    public void CreateNewRow(InputAction.CallbackContext ctx)
+    //TODO change this to use object pooling.
+    public void MoveToBottom(Panel hitPanel)
     {
-        if (ctx.performed)
-        {
-            float startX = transform.position.x;
-            float startY = transform.position.y;
-            //TODO there are only six types of block, so randomizing a row of six from them lacks a little something, so I may change this later.
-            List<Panel> possiblePanels = new List<Panel>(characterPanels);
-            Panel nextPanel = null;
-
-            for (int x = 0; x < xSize; x++)
-            {
-                nextPanel = possiblePanels[Random.Range(0, possiblePanels.Count)];
-                possiblePanels.Remove(nextPanel);
-                GameObject panelToSpawn = nextPanel.gameObject;
-                GameObject newPanelObject = Instantiate(panelToSpawn,
-                        new Vector3(startX + (offset.x * x), startY + (offset.y * lastRowPosition)),
-                        panelToSpawn.transform.rotation,
-                        this.transform);
-                Panel newPanel = newPanelObject.GetComponent<Panel>();
-                newPanel.XGridPos = x;
-                newPanel.YGridPos = lastRowSpawned;
-                panels[x].Add(newPanel);
-                newPanel.Invoke("ClearAllMatches", 1.0f);
-            }
-            lastRowPosition -= 1;
-            lastRowSpawned += 1;
-        }
-    }
-
-    public void CreateNewRow()
-    {
-        float startX = transform.position.x;
+        float xPos = hitPanel.transform.position.x;
         float startY = transform.position.y;
         //TODO there are only six types of block, so randomizing a row of six from them lacks a little something, so I may change this later.
         List<Panel> possiblePanels = new List<Panel>(characterPanels);
-        Panel nextPanel = null;
-
-        for (int x = 0; x < xSize; x++)
-        {
-            nextPanel = possiblePanels[Random.Range(0, possiblePanels.Count)];
-            possiblePanels.Remove(nextPanel);
-            GameObject panelToSpawn = nextPanel.gameObject;
-            GameObject newPanelObject = Instantiate(panelToSpawn,
-                    new Vector3(startX + (offset.x * x), startY + (offset.y * lastRowPosition)),
-                    panelToSpawn.transform.rotation,
-                    this.transform);
-            Panel newPanel = newPanelObject.GetComponent<Panel>();
-            newPanel.XGridPos = x;
-            newPanel.YGridPos = lastRowSpawned;
-            panels[x].Add(newPanel);
-            newPanel.Invoke("ClearAllMatches", 1.0f);
-        }
-        lastRowPosition -= 1;
-        lastRowSpawned += 1;
+        Panel nextPanel = possiblePanels[Random.Range(0, possiblePanels.Count)];
+        possiblePanels.Remove(nextPanel);
+        
+        hitPanel.transform.position = new Vector3(xPos, startY + (offset.y * LastRowPosition));
+        hitPanel.SetType(nextPanel);
+        hitPanel.Invoke("ClearAllMatches", 1.0f);
     }
 
 
@@ -150,12 +103,8 @@ public class BoardController : MonoBehaviour
 
     private void TrySwap(Panel clickedPanel, Panel otherPanel)
     {
-        if (clickedPanel.YGridPos == otherPanel.YGridPos && Math.Abs(clickedPanel.XGridPos - otherPanel.XGridPos ) == 1)
+        if (clickedPanel.transform.position.y == otherPanel.transform.position.y && Math.Abs(clickedPanel.XGridPos - otherPanel.XGridPos ) == 1)
         {
-            //Update the grid
-            panels[clickedPanel.XGridPos][clickedPanel.YGridPos] = otherPanel;
-            panels[otherPanel.XGridPos][otherPanel.YGridPos] = clickedPanel;
-
             clickedPanel.Swap(otherPanel);
             clickedPanel.Invoke("ClearAllMatches", 1.0f);
             otherPanel.Invoke("ClearAllMatches", 1.0f);
