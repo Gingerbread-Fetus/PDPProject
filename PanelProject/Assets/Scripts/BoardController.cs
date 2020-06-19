@@ -19,6 +19,9 @@ public class BoardController : MonoBehaviour
     public Panel SelectedPanel { get => selectedPanel; set => selectedPanel = value; }
     public int LastRowPosition { get => lastRowPosition; set => lastRowPosition = value; }
     public int LastRowSpawned { get => lastRowSpawned; set => lastRowSpawned = value; }
+        
+    public delegate void UpdateBoardChangeDelegate(bool newVal);
+    public event UpdateBoardChangeDelegate UpdateBoardChange;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +31,7 @@ public class BoardController : MonoBehaviour
         offset = panel.GetComponent<SpriteRenderer>().bounds.size;
         CreateBoard(offset.x, offset.y);
     }
-
+    
     private void CreateBoard(float xOffset, float yOffset)
     {
 
@@ -108,6 +111,7 @@ public class BoardController : MonoBehaviour
             clickedPanel.Swap(otherPanel);
             clickedPanel.Invoke("ClearAllMatches", 1.0f);
             otherPanel.Invoke("ClearAllMatches", 1.0f);
+            BroadcastMessage("UpdatePosition");
         }
         selectedPanel = null;
     }

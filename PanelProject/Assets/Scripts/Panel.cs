@@ -30,6 +30,32 @@ public class Panel : MonoBehaviour
     private Vector2[] adjacentDirections = new Vector2[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
     private bool matchFound = false;
 
+    private void Update()
+    {
+        //If the panel is null, we want to check if there is anything above it.
+        if (type.Equals(PanelType.Null))
+        {
+            SwapUp();
+        }
+    }
+
+    private void SwapUp()
+    {
+        Vector2 upVector = new Vector2(0, 1);
+        RaycastHit2D[] hitArray = Physics2D.RaycastAll(transform.position, upVector);
+        //If we don't hit at least 2 objects then the panel is at the top.
+        if(hitArray.Length >= 2)
+        {
+            //Do nothing if the one above it is also null.
+            if (hitArray[1].transform.GetComponent<Panel>().Type.Equals(PanelType.Null)) { return; }
+            RaycastHit2D hit = hitArray[1];
+            Vector3 tempPos = transform.position;
+            transform.position = hit.transform.position;
+            hit.transform.position = tempPos;
+            hitArray = Physics2D.RaycastAll(transform.position, upVector);
+        }
+    }
+
     public void SetToNull()
     {
         type = PanelType.Null;
