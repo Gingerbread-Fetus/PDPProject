@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,12 +10,14 @@ public class BoardController : MonoBehaviour
     [SerializeField] List<Panel> characterPanels;
     public static BoardController instance;
     public int xSize, ySize;
+    public List<Panel> nullPanels = new List<Panel>();
+    [HideInInspector] public bool isWaiting = false;
 
     Panel selectedPanel = null;
+    CameraController cameraController;
     Vector2 offset;
     int lastRowPosition;
     int lastRowSpawned;
-    [HideInInspector]public bool isWaiting = false;
 
     public bool IsShifting { get; set; }
     public Panel SelectedPanel { get => selectedPanel; set => selectedPanel = value; }
@@ -24,6 +27,7 @@ public class BoardController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cameraController = FindObjectOfType<CameraController>();
         instance = GetComponent<BoardController>();
         Panel panel = characterPanels[0];
         offset = panel.GetComponent<SpriteRenderer>().bounds.size;
@@ -32,7 +36,6 @@ public class BoardController : MonoBehaviour
     
     private void CreateBoard(float xOffset, float yOffset)
     {
-
         float startX = transform.position.x;
         float startY = transform.position.y;
 
@@ -63,7 +66,7 @@ public class BoardController : MonoBehaviour
         LastRowSpawned = ySize;
     }
     
-    //TODO change this to use object pooling.
+    //This method moves the top row to the bottom so that the object pool stays consistent
     public void MoveToBottom(Panel hitPanel)
     {
         float xPos = hitPanel.transform.position.x;
@@ -78,6 +81,17 @@ public class BoardController : MonoBehaviour
         hitPanel.Invoke("ClearAllMatches", 1.0f);
     }
 
+    public IEnumerator UpdateClearedPanels()
+    {
+        cameraController.moving = false;
+        foreach(Panel panel in nullPanels)
+        {
+            //swap panel up to the top
+            panel.ShiftPanelsDown();
+        }
+        cameraController.moving = true;
+        yield return null;
+    }
 
     public void GetClicked(InputAction.CallbackContext ctx)
     {

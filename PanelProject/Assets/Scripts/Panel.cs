@@ -29,30 +29,13 @@ public class Panel : MonoBehaviour
     int xGridPos = 0;
     private Vector2[] adjacentDirections = new Vector2[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
     private bool matchFound = false;
+    BoardController boardController;
 
-    private void Update()
+    private void Start()
     {
-        //If the panel is null, we want to check if there is anything above it.
-        if (type.Equals(PanelType.Null))
-        {
-            SwapUp();
-        }
+        boardController = FindObjectOfType<BoardController>();
     }
-
-    private void SwapUp()
-    {
-        RaycastHit2D[] hitArray = Physics2D.RaycastAll(transform.position, Vector2.up);
-        //If we don't hit at least 2 objects then the panel is at the top.
-        if(hitArray.Length > 1)
-        {
-            Panel panelAbove = hitArray[1].collider.GetComponent<Panel>();
-            //Do nothing if the one above it is also null.
-            if (panelAbove.Type.Equals(PanelType.Null)) { return; }
-            Swap(panelAbove);
-            panelAbove.CheckBelow();
-        }
-    }
-
+    
     private void CheckBelow()
     {
         RaycastHit2D[] hitArray = Physics2D.RaycastAll(transform.position, Vector2.down);
@@ -63,22 +46,38 @@ public class Panel : MonoBehaviour
         }
     }
 
+    public void ShiftPanelsDown()
+    {
+        RaycastHit2D[] hitArray = Physics2D.RaycastAll(transform.position, Vector2.up);
+        RaycastHit2D hit;
+        if (hitArray.Length > 1)
+        {
+            while (hitArray.Length > 1)
+            {
+                hit = hitArray[1];
+                Panel panel = hit.collider.GetComponent<Panel>();
+                hitArray = Physics2D.RaycastAll(hit.collider.transform.position, Vector2.up);
+            }
+        }
+    }
+
     public void SetToNull()
     {
         type = PanelType.Null;
         backgroundSprite.sprite = null;
         characterSprite.sprite = null;
+        boardController.nullPanels.Add(this);
     }
 
     public void Swap(Panel otherPanel)
     {
-        int tempx, tempy;
+        int tempX, tempY;
         Vector3 tmpPosition = transform.position;
-        tempx = xGridPos;
+        tempX = xGridPos;
 
         xGridPos = otherPanel.XGridPos;
 
-        otherPanel.XGridPos = tempx;
+        otherPanel.XGridPos = tempX;
 
         transform.position = otherPanel.transform.position;
         otherPanel.transform.position = tmpPosition;
@@ -125,7 +124,6 @@ public class Panel : MonoBehaviour
         if (hitArray.Length > 1)
         {
             hit = hitArray[1];//Because the object will always collide with itself on this raycast.
-            Debug.DrawRay(transform.position, castDir, Color.red, 5.4f);
             
             while (hitArray.Length > 1 && hit.collider.GetComponent<Panel>().Type == this.Type)
             {
@@ -133,12 +131,11 @@ public class Panel : MonoBehaviour
                 hitArray = Physics2D.RaycastAll(hit.collider.transform.position, castDir);
                 if(hitArray.Length < 2) { continue; }
                 hit = hitArray[1];
-                Debug.DrawRay(hit.collider.transform.position, castDir, Color.blue, 5.4f);
             }
         }
         return matchingPanels;
     }
-
+    
     private void ClearMatch(Vector2[] paths)
     {
         List<GameObject> matchingTiles = new List<GameObject>();
@@ -172,6 +169,7 @@ public class Panel : MonoBehaviour
             matchFound = false;
             //TODO play sound effect
         }
+        boardController.StartCoroutine(boardController.UpdateClearedPanels());
     }
 
     public void SetType(Panel nextPanel)
