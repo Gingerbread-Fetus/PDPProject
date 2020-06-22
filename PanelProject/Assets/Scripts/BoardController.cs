@@ -14,15 +14,13 @@ public class BoardController : MonoBehaviour
     Vector2 offset;
     int lastRowPosition;
     int lastRowSpawned;
+    [HideInInspector]public bool isWaiting = false;
 
     public bool IsShifting { get; set; }
     public Panel SelectedPanel { get => selectedPanel; set => selectedPanel = value; }
     public int LastRowPosition { get => lastRowPosition; set => lastRowPosition = value; }
     public int LastRowSpawned { get => lastRowSpawned; set => lastRowSpawned = value; }
         
-    public delegate void UpdateBoardChangeDelegate(bool newVal);
-    public event UpdateBoardChangeDelegate UpdateBoardChange;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -106,12 +104,11 @@ public class BoardController : MonoBehaviour
 
     private void TrySwap(Panel clickedPanel, Panel otherPanel)
     {
-        if (clickedPanel.transform.position.y == otherPanel.transform.position.y && Math.Abs(clickedPanel.XGridPos - otherPanel.XGridPos ) == 1)
+        if (clickedPanel.transform.position.y == otherPanel.transform.position.y && Math.Abs(clickedPanel.XGridPos - otherPanel.XGridPos ) == 1 && !IsShifting)
         {
             clickedPanel.Swap(otherPanel);
             clickedPanel.Invoke("ClearAllMatches", 1.0f);
             otherPanel.Invoke("ClearAllMatches", 1.0f);
-            BroadcastMessage("UpdatePosition");
         }
         selectedPanel = null;
     }

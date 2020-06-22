@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 294110016}
   - component: {fileID: 294110015}
   - component: {fileID: 294110014}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 408261770}
   - component: {fileID: 408261769}
   - component: {fileID: 408261772}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Game Over Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 519420033}
   - component: {fileID: 519420035}
   - component: {fileID: 519420034}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -572,7 +572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1920616979}
   - component: {fileID: 1920616978}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Game Board Sprite Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}

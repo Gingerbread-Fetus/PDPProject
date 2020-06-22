@@ -41,18 +41,25 @@ public class Panel : MonoBehaviour
 
     private void SwapUp()
     {
-        Vector2 upVector = new Vector2(0, 1);
-        RaycastHit2D[] hitArray = Physics2D.RaycastAll(transform.position, upVector);
+        RaycastHit2D[] hitArray = Physics2D.RaycastAll(transform.position, Vector2.up);
         //If we don't hit at least 2 objects then the panel is at the top.
-        if(hitArray.Length >= 2)
+        if(hitArray.Length > 1)
         {
+            Panel panelAbove = hitArray[1].collider.GetComponent<Panel>();
             //Do nothing if the one above it is also null.
-            if (hitArray[1].transform.GetComponent<Panel>().Type.Equals(PanelType.Null)) { return; }
-            RaycastHit2D hit = hitArray[1];
-            Vector3 tempPos = transform.position;
-            transform.position = hit.transform.position;
-            hit.transform.position = tempPos;
-            hitArray = Physics2D.RaycastAll(transform.position, upVector);
+            if (panelAbove.Type.Equals(PanelType.Null)) { return; }
+            Swap(panelAbove);
+            panelAbove.CheckBelow();
+        }
+    }
+
+    private void CheckBelow()
+    {
+        RaycastHit2D[] hitArray = Physics2D.RaycastAll(transform.position, Vector2.down);
+        if (hitArray.Length > 1)
+        {
+            RaycastHit2D hit2D = hitArray[1];
+            Invoke("ClearAllMatches", 1.0f); 
         }
     }
 

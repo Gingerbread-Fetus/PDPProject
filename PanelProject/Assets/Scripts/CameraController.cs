@@ -8,17 +8,18 @@ public class CameraController : MonoBehaviour
     public bool moving = true;
     public float moveSpeed = 1f;
     int objectsEnteringCollider = 0;
+    BoardController board;
     // Start is called before the first frame update
     void Start()
     {
-        
+        board = FindObjectOfType<BoardController>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector3 goal = new Vector3();
-        if (moving)
+        if (moving && !board.IsShifting)
         {
             goal = transform.position - new Vector3(0, 1, 0);
             float step = moveSpeed * Time.deltaTime;
