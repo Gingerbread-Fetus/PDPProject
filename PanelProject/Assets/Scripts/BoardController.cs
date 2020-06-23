@@ -10,7 +10,8 @@ public class BoardController : MonoBehaviour
     [SerializeField] List<Panel> characterPanels;
     public static BoardController instance;
     public int xSize, ySize;
-    public List<Panel> nullPanels = new List<Panel>();
+    [HideInInspector] public List<Panel> nullPanels = new List<Panel>();
+    [HideInInspector] public List<Panel> movingPanels = new List<Panel>();
     [HideInInspector] public bool isWaiting = false;
 
     Panel selectedPanel = null;
@@ -78,19 +79,7 @@ public class BoardController : MonoBehaviour
         
         hitPanel.transform.position = new Vector3(xPos, startY + (offset.y * LastRowPosition));
         hitPanel.SetType(nextPanel);
-        hitPanel.Invoke("ClearAllMatches", 1.0f);
-    }
-
-    public IEnumerator UpdateClearedPanels()
-    {
-        cameraController.moving = false;
-        foreach(Panel panel in nullPanels)
-        {
-            //swap panel up to the top
-            panel.ShiftPanelsDown();
-        }
-        cameraController.moving = true;
-        yield return null;
+        //hitPanel.Invoke("ClearAllMatches", 1.0f);
     }
 
     public void GetClicked(InputAction.CallbackContext ctx)
@@ -120,10 +109,20 @@ public class BoardController : MonoBehaviour
     {
         if (clickedPanel.transform.position.y == otherPanel.transform.position.y && Math.Abs(clickedPanel.XGridPos - otherPanel.XGridPos ) == 1 && !IsShifting)
         {
+            //IsShifting = true;
             clickedPanel.Swap(otherPanel);
-            clickedPanel.Invoke("ClearAllMatches", 1.0f);
-            otherPanel.Invoke("ClearAllMatches", 1.0f);
+            clickedPanel.Sort();
+            otherPanel.Sort();
+            clickedPanel.Invoke("ClearAllMatches", 1.5f);
+            otherPanel.Invoke("ClearAllMatches", 1.5f);
         }
+        //StartCoroutine(WaitForBoardToUpdate());
         selectedPanel = null;
+    }
+
+    private IEnumerator WaitForBoardToUpdate()
+    {
+        yield return new WaitUntil(() => (nullPanels.Count == 0) && (movingPanels.Count == 0));//TODO don't actually use isShifting
+        IsShifting = false;
     }
 }

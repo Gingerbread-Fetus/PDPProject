@@ -46,27 +46,70 @@ public class Panel : MonoBehaviour
         }
     }
 
-    public void ShiftPanelsDown()
+    public void SetType(Panel nextPanel)
     {
-        RaycastHit2D[] hitArray = Physics2D.RaycastAll(transform.position, Vector2.up);
-        RaycastHit2D hit;
-        if (hitArray.Length > 1)
-        {
-            while (hitArray.Length > 1)
-            {
-                hit = hitArray[1];
-                Panel panel = hit.collider.GetComponent<Panel>();
-                hitArray = Physics2D.RaycastAll(hit.collider.transform.position, Vector2.up);
-            }
-        }
+        type = nextPanel.Type;
+        backgroundSprite.color = nextPanel.backgroundSprite.color;
+        backgroundSprite.sprite = nextPanel.BackgroundSprite.sprite;
+        characterSprite.color = nextPanel.characterSprite.color;
+        characterSprite.sprite = nextPanel.CharacterSprite.sprite;
     }
-
+        
     public void SetToNull()
     {
         type = PanelType.Null;
         backgroundSprite.sprite = null;
         characterSprite.sprite = null;
         boardController.nullPanels.Add(this);
+        StartCoroutine(SortToTop());
+    }
+
+    public void Sort()
+    {
+        if (type.Equals(PanelType.Null))
+        {
+            StartCoroutine(SortToTop());
+        }
+        else
+        {
+            boardController.movingPanels.Add(this);
+            StartCoroutine(SortToBottom());
+        }
+    }
+
+    private IEnumerator SortToTop()
+    {
+        RaycastHit2D[] hitArray = Physics2D.RaycastAll(transform.position, Vector2.up);
+        Panel hitPanel = hitArray[0].collider.GetComponent<Panel>();
+        while (hitArray.Length > 1)
+        {
+            hitPanel = hitArray[1].collider.GetComponent<Panel>();
+            Swap(hitPanel);
+            yield return new WaitForSeconds(0.1f);
+            hitArray = Physics2D.RaycastAll(transform.position, Vector2.up);
+        }
+        boardController.nullPanels.Remove(this);
+    }
+
+    private IEnumerator SortToBottom()
+    {
+        RaycastHit2D[] hitArray = Physics2D.RaycastAll(transform.position, Vector2.down);
+        Panel hitPanel = hitArray[0].collider.GetComponent<Panel>();
+        while (hitArray.Length > 1)
+        {
+            hitPanel = hitArray[1].collider.GetComponent<Panel>();
+            if (hitPanel.type.Equals(PanelType.Null))
+            {
+                Swap(hitPanel); 
+            }
+            else
+            {
+                break;
+            }
+            yield return new WaitForSeconds(0.1f);
+            hitArray = Physics2D.RaycastAll(transform.position, Vector2.down);
+        }
+        boardController.movingPanels.Remove(this);
     }
 
     public void Swap(Panel otherPanel)
@@ -135,7 +178,7 @@ public class Panel : MonoBehaviour
         }
         return matchingPanels;
     }
-    
+
     private void ClearMatch(Vector2[] paths)
     {
         List<GameObject> matchingTiles = new List<GameObject>();
@@ -169,15 +212,5 @@ public class Panel : MonoBehaviour
             matchFound = false;
             //TODO play sound effect
         }
-        boardController.StartCoroutine(boardController.UpdateClearedPanels());
-    }
-
-    public void SetType(Panel nextPanel)
-    {
-        type = nextPanel.Type;
-        backgroundSprite.color = nextPanel.backgroundSprite.color;
-        backgroundSprite.sprite = nextPanel.BackgroundSprite.sprite;
-        characterSprite.color = nextPanel.characterSprite.color;
-        characterSprite.sprite = nextPanel.CharacterSprite.sprite;
     }
 }
