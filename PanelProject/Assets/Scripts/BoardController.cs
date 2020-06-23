@@ -12,6 +12,7 @@ public class BoardController : MonoBehaviour
     public int xSize, ySize;
     [HideInInspector] public List<Panel> nullPanels = new List<Panel>();
     [HideInInspector] public List<Panel> movingPanels = new List<Panel>();
+    [HideInInspector] public List<Panel> movedPanels = new List<Panel>();
     [HideInInspector] public bool isWaiting = false;
 
     Panel selectedPanel = null;
@@ -109,20 +110,33 @@ public class BoardController : MonoBehaviour
     {
         if (clickedPanel.transform.position.y == otherPanel.transform.position.y && Math.Abs(clickedPanel.XGridPos - otherPanel.XGridPos ) == 1 && !IsShifting)
         {
-            //IsShifting = true;
+            IsShifting = true;
             clickedPanel.Swap(otherPanel);
             clickedPanel.Sort();
             otherPanel.Sort();
             clickedPanel.Invoke("ClearAllMatches", 1.5f);
             otherPanel.Invoke("ClearAllMatches", 1.5f);
+            StartCoroutine(WaitForBoardToUpdate());
         }
-        //StartCoroutine(WaitForBoardToUpdate());
+        else
+        {
+            Debug.Log(IsShifting);
+        }
         selectedPanel = null;
     }
 
     private IEnumerator WaitForBoardToUpdate()
     {
         yield return new WaitUntil(() => (nullPanels.Count == 0) && (movingPanels.Count == 0));//TODO don't actually use isShifting
+        //ClearMatches();
         IsShifting = false;
+    }
+
+    private void ClearMatches()
+    {
+        foreach(Panel panel in movedPanels)
+        {
+            panel.Invoke("ClearAllMatches", 1.5f);
+        }
     }
 }

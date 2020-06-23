@@ -86,11 +86,12 @@ public class Panel : MonoBehaviour
             hitPanel = hitArray[1].collider.GetComponent<Panel>();
             Swap(hitPanel);
             yield return new WaitForSeconds(0.1f);
+            AddToMoved(hitPanel);
             hitArray = Physics2D.RaycastAll(transform.position, Vector2.up);
         }
         boardController.nullPanels.Remove(this);
     }
-
+    
     private IEnumerator SortToBottom()
     {
         RaycastHit2D[] hitArray = Physics2D.RaycastAll(transform.position, Vector2.down);
@@ -110,6 +111,15 @@ public class Panel : MonoBehaviour
             hitArray = Physics2D.RaycastAll(transform.position, Vector2.down);
         }
         boardController.movingPanels.Remove(this);
+        boardController.movedPanels.Add(this);
+    }
+
+    private void AddToMoved(Panel hitPanel)
+    {
+        if (!hitPanel.type.Equals(PanelType.Null))
+        {
+            boardController.movedPanels.Add(hitPanel);
+        }
     }
 
     public void Swap(Panel otherPanel)
