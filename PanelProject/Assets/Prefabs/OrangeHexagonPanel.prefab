@@ -100,6 +100,7 @@ MonoBehaviour:
   type: 2
   backgroundSprite: {fileID: 612942213297561821}
   characterSprite: {fileID: 7048823241534510603}
+  hoverTime: 0.1
 --- !u!61 &8672281993172130400
 BoxCollider2D:
   m_ObjectHideFlags: 0

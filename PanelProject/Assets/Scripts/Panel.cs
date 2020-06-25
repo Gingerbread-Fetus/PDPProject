@@ -20,6 +20,7 @@ public class Panel : MonoBehaviour
     [SerializeField] PanelType type = PanelType.Null;
     [SerializeField] SpriteRenderer backgroundSprite;
     [SerializeField] SpriteRenderer characterSprite;
+    [SerializeField] float hoverTime = 0.1f;
 
     public PanelType Type { get => type; set => type = value; }
     public int XGridPos { get => xGridPos; set => xGridPos = value; }
@@ -36,16 +37,6 @@ public class Panel : MonoBehaviour
         boardController = FindObjectOfType<BoardController>();
     }
     
-    private void CheckBelow()
-    {
-        RaycastHit2D[] hitArray = Physics2D.RaycastAll(transform.position, Vector2.down);
-        if (hitArray.Length > 1)
-        {
-            RaycastHit2D hit2D = hitArray[1];
-            Invoke("ClearAllMatches", 1.0f); 
-        }
-    }
-
     public void SetType(Panel nextPanel)
     {
         type = nextPanel.Type;
@@ -85,8 +76,7 @@ public class Panel : MonoBehaviour
         {
             hitPanel = hitArray[1].collider.GetComponent<Panel>();
             Swap(hitPanel);
-            yield return new WaitForSeconds(0.1f);
-            AddToMoved(hitPanel);
+            yield return new WaitForSeconds(hoverTime);
             hitArray = Physics2D.RaycastAll(transform.position, Vector2.up);
         }
         boardController.nullPanels.Remove(this);
@@ -107,21 +97,12 @@ public class Panel : MonoBehaviour
             {
                 break;
             }
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(hoverTime);
             hitArray = Physics2D.RaycastAll(transform.position, Vector2.down);
         }
         boardController.movingPanels.Remove(this);
-        boardController.movedPanels.Add(this);
     }
-
-    private void AddToMoved(Panel hitPanel)
-    {
-        if (!hitPanel.type.Equals(PanelType.Null))
-        {
-            boardController.movedPanels.Add(hitPanel);
-        }
-    }
-
+    
     public void Swap(Panel otherPanel)
     {
         int tempX, tempY;
@@ -222,5 +203,10 @@ public class Panel : MonoBehaviour
             matchFound = false;
             //TODO play sound effect
         }
+    }
+
+    public bool CheckForMatch()
+    {
+        return false;
     }
 }

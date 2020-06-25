@@ -114,8 +114,8 @@ public class BoardController : MonoBehaviour
             clickedPanel.Swap(otherPanel);
             clickedPanel.Sort();
             otherPanel.Sort();
-            clickedPanel.Invoke("ClearAllMatches", 1.5f);
-            otherPanel.Invoke("ClearAllMatches", 1.5f);
+            clickedPanel.Invoke("ClearAllMatches", 0.1f);
+            otherPanel.Invoke("ClearAllMatches", 0.1f);
             StartCoroutine(WaitForBoardToUpdate());
         }
         else
@@ -127,16 +127,26 @@ public class BoardController : MonoBehaviour
 
     private IEnumerator WaitForBoardToUpdate()
     {
-        yield return new WaitUntil(() => (nullPanels.Count == 0) && (movingPanels.Count == 0));//TODO don't actually use isShifting
-        //ClearMatches();
-        IsShifting = false;
+        yield return new WaitUntil(() => (nullPanels.Count == 0) && (movingPanels.Count == 0));
+        //The idea is that here once all the panels are done updating, I find some way to check
+        //All the panels and keep iterating through it
+        StartCoroutine(CheckAllPanels());
     }
 
-    private void ClearMatches()
+    private IEnumerator CheckAllPanels()
     {
-        foreach(Panel panel in movedPanels)
+        Panel panel = null;
+        foreach (Transform child in transform)
         {
-            panel.Invoke("ClearAllMatches", 1.5f);
+            panel = child.GetComponent<Panel>();
+
+            if (panel.Type.Equals(Panel.PanelType.Null)) { continue; }//Nulls can't generate matches
+
+            IsShifting = true;
+            panel.ClearAllMatches();
+            yield return new WaitUntil(() => (nullPanels.Count == 0) && (movingPanels.Count == 0));
         }
+        //TODO: If any matches found, start again, do it until no more matches found.
+        IsShifting = false;
     }
 }

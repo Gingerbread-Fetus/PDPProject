@@ -126,6 +126,7 @@ MonoBehaviour:
   type: 0
   backgroundSprite: {fileID: 612942213297561821}
   characterSprite: {fileID: 7048823241534510603}
+  hoverTime: 0.1
 --- !u!50 &-3011189280115908946
 Rigidbody2D:
   serializedVersion: 4
