@@ -26,10 +26,12 @@ public class Panel : MonoBehaviour
     public int XGridPos { get => xGridPos; set => xGridPos = value; }
     public SpriteRenderer BackgroundSprite { get => backgroundSprite; set => backgroundSprite = value; }
     public SpriteRenderer CharacterSprite { get => characterSprite; set => characterSprite = value; }
+    public bool ActiveState { get => activeState; set => activeState = value; }
 
     int xGridPos = 0;
     private Vector2[] adjacentDirections = new Vector2[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
     private bool matchFound = false;
+    private bool activeState = true;
     BoardController boardController;
 
     private void Start()

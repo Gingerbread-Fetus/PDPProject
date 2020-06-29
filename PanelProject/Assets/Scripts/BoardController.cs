@@ -114,9 +114,7 @@ public class BoardController : MonoBehaviour
             clickedPanel.Swap(otherPanel);
             clickedPanel.Sort();
             otherPanel.Sort();
-            clickedPanel.Invoke("ClearAllMatches", 0.1f);
-            otherPanel.Invoke("ClearAllMatches", 0.1f);
-            StartCoroutine(WaitForBoardToUpdate());
+            StartCoroutine(CheckAllPanels());
         }
         else
         {
@@ -125,24 +123,17 @@ public class BoardController : MonoBehaviour
         selectedPanel = null;
     }
 
-    private IEnumerator WaitForBoardToUpdate()
+    public IEnumerator CheckAllPanels()
     {
         yield return new WaitUntil(() => (nullPanels.Count == 0) && (movingPanels.Count == 0));
-        //The idea is that here once all the panels are done updating, I find some way to check
-        //All the panels and keep iterating through it
-        StartCoroutine(CheckAllPanels());
-    }
-
-    private IEnumerator CheckAllPanels()
-    {
         Panel panel = null;
-        foreach (Transform child in transform)
+        Panel[] childPanels = GetComponentsInChildren<Panel>();
+        for(int i = 0; i < childPanels.Length; i++)
         {
-            panel = child.GetComponent<Panel>();
+            panel = childPanels[i];
 
-            if (panel.Type.Equals(Panel.PanelType.Null)) { continue; }//Nulls can't generate matches
+            if (panel.Type.Equals(Panel.PanelType.Null) || !panel.ActiveState) { continue; }//Nulls can't generate matches
 
-            IsShifting = true;
             panel.ClearAllMatches();
             yield return new WaitUntil(() => (nullPanels.Count == 0) && (movingPanels.Count == 0));
         }
