@@ -10,9 +10,8 @@ public class BoardController : MonoBehaviour
     [SerializeField] List<Panel> characterPanels;
     public static BoardController instance;
     public int xSize, ySize;
-    [HideInInspector] public List<Panel> nullPanels = new List<Panel>();
-    [HideInInspector] public List<Panel> movingPanels = new List<Panel>();
-    [HideInInspector] public List<Panel> movedPanels = new List<Panel>();
+    public List<Panel> nullPanels = new List<Panel>();
+    public List<Panel> movingPanels = new List<Panel>();
     [HideInInspector] public bool isWaiting = false;
 
     Panel selectedPanel = null;
@@ -20,8 +19,21 @@ public class BoardController : MonoBehaviour
     Vector2 offset;
     int lastRowPosition;
     int lastRowSpawned;
+    bool isShifting;
+    private List<Panel> matchedPanels = new List<Panel>();
+    Panel[] childPanels;
 
-    public bool IsShifting { get; set; }
+    public bool IsShifting
+    {
+        get
+        {
+            return isShifting;
+        }
+        set
+        {
+            isShifting = value;
+        }
+    }
     public Panel SelectedPanel { get => selectedPanel; set => selectedPanel = value; }
     public int LastRowPosition { get => lastRowPosition; set => lastRowPosition = value; }
     public int LastRowSpawned { get => lastRowSpawned; set => lastRowSpawned = value; }
@@ -66,6 +78,7 @@ public class BoardController : MonoBehaviour
         }
         LastRowPosition = -ySize;
         LastRowSpawned = ySize;
+        childPanels = GetComponentsInChildren<Panel>();
     }
     
     //This method moves the top row to the bottom so that the object pool stays consistent
@@ -80,7 +93,10 @@ public class BoardController : MonoBehaviour
         
         hitPanel.transform.position = new Vector3(xPos, startY + (offset.y * LastRowPosition));
         hitPanel.SetType(nextPanel);
-        //hitPanel.Invoke("ClearAllMatches", 1.0f);
+        if (nullPanels.Contains(hitPanel))
+        {
+            nullPanels.Remove(hitPanel);
+        }
     }
 
     public void GetClicked(InputAction.CallbackContext ctx)
@@ -92,7 +108,7 @@ public class BoardController : MonoBehaviour
 
             if(hit.collider != null && hit.collider.tag == "Panel")
             {
-                Debug.Log("Clicked on: " + hit.collider.gameObject.name);
+                //Debug.Log("Clicked on: " + hit.collider.gameObject.name);
                 if (selectedPanel == null)
                 {
                     selectedPanel = hit.collider.gameObject.GetComponent<Panel>();
@@ -110,15 +126,10 @@ public class BoardController : MonoBehaviour
     {
         if (clickedPanel.transform.position.y == otherPanel.transform.position.y && Math.Abs(clickedPanel.XGridPos - otherPanel.XGridPos ) == 1 && !IsShifting)
         {
-            IsShifting = true;
             clickedPanel.Swap(otherPanel);
             clickedPanel.Sort();
             otherPanel.Sort();
             StartCoroutine(CheckAllPanels());
-        }
-        else
-        {
-            Debug.Log(IsShifting);
         }
         selectedPanel = null;
     }
@@ -127,17 +138,35 @@ public class BoardController : MonoBehaviour
     {
         yield return new WaitUntil(() => (nullPanels.Count == 0) && (movingPanels.Count == 0));
         Panel panel = null;
-        Panel[] childPanels = GetComponentsInChildren<Panel>();
         for(int i = 0; i < childPanels.Length; i++)
         {
             panel = childPanels[i];
 
             if (panel.Type.Equals(Panel.PanelType.Null) || !panel.ActiveState) { continue; }//Nulls can't generate matches
 
-            panel.ClearAllMatches();
-            yield return new WaitUntil(() => (nullPanels.Count == 0) && (movingPanels.Count == 0));
+            if (panel.CheckMatches())
+            {
+                matchedPanels.Add(panel);
+            }
         }
-        //TODO: If any matches found, start again, do it until no more matches found.
-        IsShifting = false;
+        if(matchedPanels.Count > 0)
+        {
+            IsShifting = true;
+            foreach (Panel matchedPanel in matchedPanels)
+            {
+                matchedPanel.SetToNull();
+            }
+            yield return new WaitUntil(() => (nullPanels.Count == 0) && (movingPanels.Count == 0));
+            IsShifting = false;
+
+            cameraController.StartCoroutine(cameraController.PauseCamera(CalculateWaitTime(matchedPanels.Count)));
+            matchedPanels.Clear();
+            StartCoroutine(CheckAllPanels());
+        }
+    }
+
+    private float CalculateWaitTime(int count)
+    {
+        return (float)count / 2f;
     }
 }

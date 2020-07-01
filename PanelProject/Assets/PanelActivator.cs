@@ -8,5 +8,6 @@ public class PanelActivator : MonoBehaviour
     {
         Debug.Log("Activator hit: ");
         //collision.GetComponent<Panel>().IsActive = true;
+        //hitPanel.Invoke("ClearAllMatches", 1.0f);
     }
 }

@@ -53,14 +53,19 @@ public class Panel : MonoBehaviour
         type = PanelType.Null;
         backgroundSprite.sprite = null;
         characterSprite.sprite = null;
-        boardController.nullPanels.Add(this);
+        matchFound = false;
         StartCoroutine(SortToTop());
     }
 
+    /*TODO: The issue with some matches not happening seems to be coming from sort.
+     * I suspect that it's because they aren't getting added to the nullPanels list. I've
+     * done that here, but it needs more testing.
+     * */
     public void Sort()
     {
         if (type.Equals(PanelType.Null))
         {
+            boardController.nullPanels.Add(this);
             StartCoroutine(SortToTop());
         }
         else
@@ -72,6 +77,7 @@ public class Panel : MonoBehaviour
 
     private IEnumerator SortToTop()
     {
+        if (!type.Equals(PanelType.Null)) { Debug.Break(); }
         RaycastHit2D[] hitArray = Physics2D.RaycastAll(transform.position, Vector2.up);
         Panel hitPanel = hitArray[0].collider.GetComponent<Panel>();
         while (hitArray.Length > 1)
@@ -207,8 +213,32 @@ public class Panel : MonoBehaviour
         }
     }
 
-    public bool CheckForMatch()
+    private void GetMatches(Vector2[] paths)
     {
-        return false;
+        List<GameObject> matchingTiles = new List<GameObject>();
+        for (int i = 0; i < paths.Length; i++)
+        {
+            matchingTiles.AddRange(FindMatch(paths[i]));
+        }
+        if (matchingTiles.Count >= 2)
+        {
+            matchFound = true;
+        }
+    }
+
+    public bool CheckMatches()
+    {
+        GetMatches(new Vector2[2] { Vector2.left, Vector2.right });
+        GetMatches(new Vector2[2] { Vector2.up, Vector2.down });
+
+        return matchFound;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag.Equals("MainCamera"))
+        {
+            StopAllCoroutines();
+        }
     }
 }

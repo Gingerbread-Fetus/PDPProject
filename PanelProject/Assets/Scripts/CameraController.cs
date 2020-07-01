@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         Vector3 goal = new Vector3();
-        if (moving && !board.IsShifting)
+        if (moving)
         {
             goal = transform.position - new Vector3(0, 1, 0);
             float step = moveSpeed * Time.deltaTime;
@@ -43,5 +43,12 @@ public class CameraController : MonoBehaviour
             bc.LastRowSpawned += 1;
             objectsEnteringCollider = 0;
         }
+    }
+
+    public IEnumerator PauseCamera(float pauseTime)
+    {
+        moving = false;
+        yield return new WaitForSeconds(pauseTime);
+        moving = true;
     }
 }
