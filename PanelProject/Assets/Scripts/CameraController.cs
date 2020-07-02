@@ -55,7 +55,6 @@ public class CameraController : MonoBehaviour
             timeLeft = pauseTime;
             while(timeLeft > 0)
             {
-                Debug.Log("Time Left: " + timeLeft);
                 yield return new WaitForSeconds(0.1f);
                 timeLeft -= 0.1f;
             }

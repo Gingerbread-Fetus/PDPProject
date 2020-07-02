@@ -93,6 +93,7 @@ public class BoardController : MonoBehaviour
         
         hitPanel.transform.position = new Vector3(xPos, startY + (offset.y * LastRowPosition));
         hitPanel.SetType(nextPanel);
+        hitPanel.ActiveState = false;
         if (nullPanels.Contains(hitPanel))
         {
             nullPanels.Remove(hitPanel);

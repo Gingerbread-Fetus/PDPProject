@@ -101,6 +101,8 @@ MonoBehaviour:
   backgroundSprite: {fileID: 612942213297561821}
   characterSprite: {fileID: 7048823241534510603}
   hoverTime: 0.1
+  inactiveMaterial: {fileID: 2100000, guid: 6245af58df018654991bfa0d2118085a, type: 2}
+  activeMaterial: {fileID: 2100000, guid: 77fb20a8e91a4004497e9568dbd320fa, type: 2}
 --- !u!61 &1168630249969704806
 BoxCollider2D:
   m_ObjectHideFlags: 0

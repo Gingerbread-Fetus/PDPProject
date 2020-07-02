@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System;
-using UnityEngine.EventSystems;
 using UnityEngine;
 
 public class Panel : MonoBehaviour
@@ -21,18 +19,38 @@ public class Panel : MonoBehaviour
     [SerializeField] SpriteRenderer backgroundSprite;
     [SerializeField] SpriteRenderer characterSprite;
     [SerializeField] float hoverTime = 0.1f;
+    [SerializeField] Material inactiveMaterial;
+    [SerializeField] Material activeMaterial;
 
     public PanelType Type { get => type; set => type = value; }
     public int XGridPos { get => xGridPos; set => xGridPos = value; }
     public SpriteRenderer BackgroundSprite { get => backgroundSprite; set => backgroundSprite = value; }
     public SpriteRenderer CharacterSprite { get => characterSprite; set => characterSprite = value; }
-    public bool ActiveState { get => activeState; set => activeState = value; }
+    
 
     int xGridPos = 0;
     private Vector2[] adjacentDirections = new Vector2[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
     private bool matchFound = false;
     private bool activeState = true;
     BoardController boardController;
+
+    public bool ActiveState
+    {
+        get => activeState;
+        set
+        {
+            activeState = value;
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            if (activeState)
+            {
+                spriteRenderer.material = activeMaterial;
+            }
+            else
+            {
+                spriteRenderer.material = inactiveMaterial;
+            }
+        }
+    }
 
     private void Start()
     {
@@ -56,11 +74,7 @@ public class Panel : MonoBehaviour
         matchFound = false;
         StartCoroutine(SortToTop());
     }
-
-    /*TODO: The issue with some matches not happening seems to be coming from sort.
-     * I suspect that it's because they aren't getting added to the nullPanels list. I've
-     * done that here, but it needs more testing.
-     * */
+    
     public void Sort()
     {
         if (type.Equals(PanelType.Null))
@@ -177,42 +191,7 @@ public class Panel : MonoBehaviour
         }
         return matchingPanels;
     }
-
-    private void ClearMatch(Vector2[] paths)
-    {
-        List<GameObject> matchingTiles = new List<GameObject>();
-        for(int i = 0; i < paths.Length; i++)
-        {
-            matchingTiles.AddRange(FindMatch(paths[i]));
-        }
-        if (matchingTiles.Count >= 2)
-        {
-            for(int i = 0; i < matchingTiles.Count; i++)
-            {
-                matchingTiles[i].GetComponent<Panel>().SetToNull();
-            }
-            matchFound = true;
-        }
-    }
-
-    public void ClearAllMatches()
-    {
-        if(type == PanelType.Null)
-        {
-            return;
-        }
-
-        ClearMatch(new Vector2[2] { Vector2.left, Vector2.right });
-        ClearMatch(new Vector2[2] { Vector2.up, Vector2.down });
-
-        if (matchFound)
-        {
-            SetToNull();
-            matchFound = false;
-            //TODO play sound effect
-        }
-    }
-
+        
     private void GetMatches(Vector2[] paths)
     {
         List<GameObject> matchingTiles = new List<GameObject>();
