@@ -40,18 +40,10 @@ public class Panel : MonoBehaviour
         set
         {
             activeState = value;
-            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-            if (activeState)
-            {
-                spriteRenderer.material = activeMaterial;
-            }
-            else
-            {
-                spriteRenderer.material = inactiveMaterial;
-            }
+            ActivatePanel();
         }
     }
-
+    
     private void Start()
     {
         boardController = FindObjectOfType<BoardController>();
@@ -163,6 +155,8 @@ public class Panel : MonoBehaviour
             
             while (hitArray.Length > 1 && hit.collider.GetComponent<Panel>().Type == this.Type)
             {
+                //TODO: Found a problem with it crashing in here
+                if (!hit.collider.GetComponent<Panel>().ActiveState) { break; }
                 matchingPanels.Add(hit.collider.gameObject);
                 hitArray = Physics2D.RaycastAll(hit.collider.transform.position, castDir);
                 if(hitArray.Length < 2) { continue; }
@@ -198,6 +192,19 @@ public class Panel : MonoBehaviour
         if (other.tag.Equals("MainCamera"))
         {
             StopAllCoroutines();
+        }
+    }
+
+    private void ActivatePanel()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (activeState)
+        {
+            spriteRenderer.material = activeMaterial;
+        }
+        else
+        {
+            spriteRenderer.material = inactiveMaterial;
         }
     }
 }
