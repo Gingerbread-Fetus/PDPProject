@@ -152,13 +152,13 @@ public class BoardController : MonoBehaviour
         }
         if(matchedPanels.Count > 0)
         {
+            cameraController.StartCoroutine(cameraController.PauseCamera(CalculateWaitTime(matchedPanels.Count)));
             foreach (Panel matchedPanel in matchedPanels)
             {
                 matchedPanel.SetToNull();
             }
             yield return new WaitUntil(() => (nullPanels.Count == 0) && (movingPanels.Count == 0));
             
-            cameraController.StartCoroutine(cameraController.PauseCamera(CalculateWaitTime(matchedPanels.Count)));
             matchedPanels.Clear();
             StartCoroutine(CheckAllPanels());
         }

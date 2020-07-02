@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour
     int objectsEnteringCollider = 0;
     BoardController board;
     [SerializeField] float speedIncreaseFactor = 2f;
+    float timeLeft = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -51,16 +52,20 @@ public class CameraController : MonoBehaviour
         if (moving)
         {
             moving = false;
-            yield return new WaitForSeconds(pauseTime);
-            moving = true; 
+            timeLeft = pauseTime;
+            while(timeLeft > 0)
+            {
+                Debug.Log("Time Left: " + timeLeft);
+                yield return new WaitForSeconds(0.1f);
+                timeLeft -= 0.1f;
+            }
+            moving = true;
         }
         else
         {
-            StopAllCoroutines();
-            moving = false;
-            yield return new WaitForSeconds(pauseTime);
-            moving = true;
+            timeLeft += pauseTime;
         }
+        if(timeLeft < 0) { timeLeft = 0; }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
