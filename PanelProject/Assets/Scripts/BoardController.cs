@@ -23,6 +23,10 @@ public class BoardController : MonoBehaviour
     private List<Panel> matchedPanels = new List<Panel>();
     Panel[] childPanels;
 
+    public Panel SelectedPanel { get => selectedPanel; set => selectedPanel = value; }
+    public int LastRowPosition { get => lastRowPosition; set => lastRowPosition = value; }
+    public int LastRowSpawned { get => lastRowSpawned; set => lastRowSpawned = value; }
+    
     public bool IsShifting
     {
         get
@@ -33,11 +37,7 @@ public class BoardController : MonoBehaviour
         {
             isShifting = value;
         }
-    }
-    public Panel SelectedPanel { get => selectedPanel; set => selectedPanel = value; }
-    public int LastRowPosition { get => lastRowPosition; set => lastRowPosition = value; }
-    public int LastRowSpawned { get => lastRowSpawned; set => lastRowSpawned = value; }
-        
+    }    
     // Start is called before the first frame update
     void Start()
     {

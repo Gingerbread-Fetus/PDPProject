@@ -127,7 +127,7 @@ public class Panel : MonoBehaviour
     
     public void Swap(Panel otherPanel)
     {
-        int tempX, tempY;
+        int tempX;
         Vector3 tmpPosition = transform.position;
         tempX = xGridPos;
 
@@ -151,27 +151,7 @@ public class Panel : MonoBehaviour
             return panel.Type == this.Type;
         }
     }
-
-    private GameObject GetAdjacent(Vector2 castDir)
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, castDir);
-        if(hit.collider != null)
-        {
-            return hit.collider.gameObject;
-        }
-        return null;
-    }
-
-    private List<GameObject> GetAllAdjacentPanels()
-    {
-        List<GameObject> adjacentPanels = new List<GameObject>();
-        for (int i = 0; i < adjacentDirections.Length; i++)
-        {
-            adjacentPanels.Add(GetAdjacent(adjacentDirections[i]));
-        }
-        return adjacentPanels;
-    }
-
+    
     private List<GameObject> FindMatch(Vector2 castDir)
     {
         List<GameObject> matchingPanels = new List<GameObject>();
