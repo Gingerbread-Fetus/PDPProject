@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Panel
   - Game Over
+  - Activator
   layers:
   - Default
   - TransparentFX

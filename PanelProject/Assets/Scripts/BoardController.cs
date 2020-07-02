@@ -137,6 +137,7 @@ public class BoardController : MonoBehaviour
     public IEnumerator CheckAllPanels()
     {
         yield return new WaitUntil(() => (nullPanels.Count == 0) && (movingPanels.Count == 0));
+        IsShifting = true;
         Panel panel = null;
         for(int i = 0; i < childPanels.Length; i++)
         {
@@ -151,18 +152,17 @@ public class BoardController : MonoBehaviour
         }
         if(matchedPanels.Count > 0)
         {
-            IsShifting = true;
             foreach (Panel matchedPanel in matchedPanels)
             {
                 matchedPanel.SetToNull();
             }
             yield return new WaitUntil(() => (nullPanels.Count == 0) && (movingPanels.Count == 0));
-            IsShifting = false;
-
+            
             cameraController.StartCoroutine(cameraController.PauseCamera(CalculateWaitTime(matchedPanels.Count)));
             matchedPanels.Clear();
             StartCoroutine(CheckAllPanels());
         }
+        IsShifting = false;
     }
 
     private float CalculateWaitTime(int count)

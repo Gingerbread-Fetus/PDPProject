@@ -27,7 +27,7 @@
                     "name": "",
                     "id": "d12c0699-b9b4-443a-b3aa-a6c3310b0710",
                     "path": "<Keyboard>/space",
-                    "interactions": "Press",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "MoveUp",

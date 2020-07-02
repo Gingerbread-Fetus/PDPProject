@@ -9,6 +9,8 @@ public class CameraController : MonoBehaviour
     public float moveSpeed = 1f;
     int objectsEnteringCollider = 0;
     BoardController board;
+    [SerializeField] float speedIncreaseFactor = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,35 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    public void MoveFaster(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            moveSpeed *= speedIncreaseFactor;
+        }
+        else if (ctx.canceled)
+        {
+            moveSpeed /= speedIncreaseFactor;
+        }
+    }
+
+    public IEnumerator PauseCamera(float pauseTime)
+    {
+        if (moving)
+        {
+            moving = false;
+            yield return new WaitForSeconds(pauseTime);
+            moving = true; 
+        }
+        else
+        {
+            StopAllCoroutines();
+            moving = false;
+            yield return new WaitForSeconds(pauseTime);
+            moving = true;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         objectsEnteringCollider += 1;
@@ -43,12 +74,5 @@ public class CameraController : MonoBehaviour
             bc.LastRowSpawned += 1;
             objectsEnteringCollider = 0;
         }
-    }
-
-    public IEnumerator PauseCamera(float pauseTime)
-    {
-        moving = false;
-        yield return new WaitForSeconds(pauseTime);
-        moving = true;
     }
 }

@@ -65,18 +65,17 @@ public class Panel : MonoBehaviour
     {
         if (type.Equals(PanelType.Null))
         {
-            boardController.nullPanels.Add(this);
             StartCoroutine(SortToTop());
         }
         else
         {
-            boardController.movingPanels.Add(this);
             StartCoroutine(SortToBottom());
         }
     }
 
     private IEnumerator SortToTop()
     {
+        boardController.nullPanels.Add(this);
         if (!type.Equals(PanelType.Null)) { Debug.Break(); }
         RaycastHit2D[] hitArray = Physics2D.RaycastAll(transform.position, Vector2.up);
         Panel hitPanel = hitArray[0].collider.GetComponent<Panel>();
@@ -92,6 +91,7 @@ public class Panel : MonoBehaviour
     
     private IEnumerator SortToBottom()
     {
+        boardController.movingPanels.Add(this);
         RaycastHit2D[] hitArray = Physics2D.RaycastAll(transform.position, Vector2.down);
         Panel hitPanel = hitArray[0].collider.GetComponent<Panel>();
         while (hitArray.Length > 1)
