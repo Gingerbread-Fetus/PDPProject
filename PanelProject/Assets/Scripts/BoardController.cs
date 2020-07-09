@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 public class BoardController : MonoBehaviour
 {
     [SerializeField] List<Panel> characterPanels;
+    [SerializeField, Tooltip("How far from the top the panels start spawning")] int startingHeight = 6;
     public static BoardController instance;
     public int xSize, ySize;
     public List<Panel> nullPanels = new List<Panel>();
@@ -74,6 +75,11 @@ public class BoardController : MonoBehaviour
                 previousLeft[y] = newPanel.GetComponent<Panel>();
                 previousAbove = newPanel.GetComponent<Panel>();
                 newPanel.GetComponent<Panel>().XGridPos = x;
+
+                if (y < startingHeight)
+                {
+                    newPanel.SetToNull();
+                }
             }
         }
         LastRowPosition = -ySize;
@@ -125,7 +131,11 @@ public class BoardController : MonoBehaviour
 
     private void TrySwap(Panel clickedPanel, Panel otherPanel)
     {
-        if (clickedPanel.transform.position.y == otherPanel.transform.position.y && Math.Abs(clickedPanel.XGridPos - otherPanel.XGridPos ) == 1 && !IsShifting)
+        if (clickedPanel.transform.position.y == otherPanel.transform.position.y 
+            && Math.Abs(clickedPanel.XGridPos - otherPanel.XGridPos ) == 1 
+            && !IsShifting
+            && clickedPanel.ActiveState
+            && otherPanel.ActiveState)
         {
             clickedPanel.Swap(otherPanel);
             clickedPanel.Sort();
