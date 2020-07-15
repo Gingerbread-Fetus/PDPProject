@@ -1,21 +1,3 @@
-using UnityEngine;
-using UnityEditor;
-using UnityEngine.U2D.Animation;
-
-namespace UnityEditor.U2D.Animation
-{
-
-#if ENABLE_ENTITIES
-
-    [CustomEditor(typeof(SpriteSkinEntity))]
-    [CanEditMultipleObjects]
-    class SpriteSkinEntityEditor : Editor
-    {
-        public override void OnInspectorGUI()
-        {
-          
-        }
-    }
-#endif
-
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:823e6db72f39cba56eddc99351e0dcfe73e36d5e19883677ebd941aa6407205d
+size 368

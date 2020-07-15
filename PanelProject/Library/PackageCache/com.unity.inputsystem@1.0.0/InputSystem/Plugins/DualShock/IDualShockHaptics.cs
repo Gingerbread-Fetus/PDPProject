@@ -1,17 +1,3 @@
-using UnityEngine.InputSystem.Haptics;
-
-namespace UnityEngine.InputSystem.DualShock
-{
-    /// <summary>
-    /// Extended haptics interface for DualShock controllers.
-    /// </summary>
-    public interface IDualShockHaptics : IDualMotorRumble
-    {
-        /// <summary>
-        /// Set the color of the light bar on the back of the controller.
-        /// </summary>
-        /// <param name="color">Color to use for the light bar. Alpha component is ignored. Also,
-        /// RBG values are clamped into [0..1] range.</param>
-        void SetLightBarColor(Color color);
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:e1ff0c72f6d2e3d1da5b60edb9a397a5d62507ad6099725dc477b56315b5c12d
+size 597

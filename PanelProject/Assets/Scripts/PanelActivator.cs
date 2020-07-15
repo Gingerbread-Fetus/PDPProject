@@ -1,22 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class PanelActivator : MonoBehaviour
-{
-    private int objectsEnteringCollider = 0;
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Panel hitPanel = collision.GetComponent<Panel>();
-        hitPanel.ActiveState = true;
-
-        objectsEnteringCollider += 1;
-        BoardController bc = FindObjectOfType<BoardController>();
-        if (objectsEnteringCollider == 6)
-        {
-            bc.StartCoroutine(bc.CheckAllPanels());
-            objectsEnteringCollider = 0;
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:73f99ffa83a11c496224448a8c9570e2a015bdebd5e2339d4ce3cf2476683040
+size 622

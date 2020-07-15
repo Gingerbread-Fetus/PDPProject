@@ -1,22 +1,3 @@
-using System;
-
-namespace UnityEngine.InputSystem.Utilities
-{
-    /// <summary>
-    /// Provide a format string to use when creating display strings for instances of the class.
-    /// </summary>
-    [AttributeUsage(AttributeTargets.Class, Inherited = true)]
-    public class DisplayStringFormatAttribute : Attribute
-    {
-        /// <summary>
-        /// Format template string in the form of "{namedPart} verbatimText". All named parts enclosed in
-        /// curly braces are replaced from context whereas other text is included as is.
-        /// </summary>
-        public string formatString { get; set; }
-
-        public DisplayStringFormatAttribute(string formatString)
-        {
-            this.formatString = formatString;
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2ba2735fad9bd774be707c3c8857eee1920158dbc48e5c222176ae09537d6e16
+size 773

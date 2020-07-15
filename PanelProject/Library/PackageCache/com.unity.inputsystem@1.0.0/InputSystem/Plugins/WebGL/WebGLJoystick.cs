@@ -1,13 +1,3 @@
-#if UNITY_WEBGL || UNITY_EDITOR
-
-namespace UnityEngine.InputSystem.WebGL
-{
-    /// <summary>
-    /// A Joystick or Gamepad on WebGL that does not have any known mapping.
-    /// </summary>
-    [Scripting.Preserve]
-    public class WebGLJoystick : Joystick
-    {
-    }
-}
-#endif // UNITY_WEBGL || UNITY_EDITOR
+version https://git-lfs.github.com/spec/v1
+oid sha256:10f505695df81f91c760a119092307d5474007a1e57da11aee237d2d610e092f
+size 321

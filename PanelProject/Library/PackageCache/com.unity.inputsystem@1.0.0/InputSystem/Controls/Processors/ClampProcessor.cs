@@ -1,16 +1,3 @@
-////TODO: move clamping settings into struct and add process function; then embed both here and in AxisControl
-
-namespace UnityEngine.InputSystem.Processors
-{
-    [Scripting.Preserve]
-    internal class ClampProcessor : InputProcessor<float>
-    {
-        public float min;
-        public float max;
-
-        public override float Process(float value, InputControl control)
-        {
-            return Mathf.Clamp(value, min, max);
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:14d9b016109237ccbacb4c2b6ca8116fb4ef6e1c523539b8ee1e8feec639f2a7
+size 467

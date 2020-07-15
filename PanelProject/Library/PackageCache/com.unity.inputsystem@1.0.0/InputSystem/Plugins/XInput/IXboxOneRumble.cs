@@ -1,12 +1,3 @@
-using UnityEngine.InputSystem.Haptics;
-
-namespace UnityEngine.InputSystem.XInput
-{
-    /// <summary>
-    /// Extended dual motor gamepad rumble that adds left and right trigger motors.
-    /// </summary>
-    public interface IXboxOneRumble : IDualMotorRumble
-    {
-        void SetMotorSpeeds(float lowFrequency, float highFrequency, float leftTrigger, float rightTrigger);
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:16595e0cca128d8f952641b077dcc6248cf28a55b3130ddf7dbcfd9a787c2564
+size 394

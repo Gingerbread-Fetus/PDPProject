@@ -1,32 +1,3 @@
-using System.Runtime.InteropServices;
-using UnityEngine.InputSystem.Utilities;
-
-namespace UnityEngine.InputSystem.LowLevel
-{
-    /// <summary>
-    /// Command to find out whether a device is currently enabled or not.
-    /// </summary>
-    [StructLayout(LayoutKind.Explicit, Size = kSize)]
-    public struct QueryEnabledStateCommand : IInputDeviceCommandInfo
-    {
-        public static FourCC Type => new FourCC('Q', 'E', 'N', 'B');
-
-        internal const int kSize = InputDeviceCommand.kBaseCommandSize + sizeof(bool);
-
-        [FieldOffset(0)]
-        public InputDeviceCommand baseCommand;
-
-        [FieldOffset(InputDeviceCommand.kBaseCommandSize)]
-        public bool isEnabled;
-
-        public FourCC typeStatic => Type;
-
-        public static QueryEnabledStateCommand Create()
-        {
-            return new QueryEnabledStateCommand
-            {
-                baseCommand = new InputDeviceCommand(Type, kSize)
-            };
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:5b6df15ff0d6e64036b64d69813ec39907487ae0312079cd1c1e15b6b9bd7080
+size 989

@@ -1,3 +1,3 @@
-This sample shows how to tag devices with custom "usages" and how to bind actions specifically to devices with only those usages.
-
-This is useful if you have the same type of device that appears in multiple different roles that you want to distinguish when binding to the device. For example, when a device may appear in both the left and the right hand or may appear held in different orientations (say, horizontal vs vertical).
+version https://git-lfs.github.com/spec/v1
+oid sha256:f27e197f21806826887907e5a82f76b2bf76769ce4c3512031812f6758de5669
+size 433

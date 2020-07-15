@@ -1,28 +1,3 @@
-#if UNITY_INPUT_SYSTEM_ENABLE_XR || PACKAGE_DOCS_GENERATION
-namespace UnityEngine.InputSystem.XR.Haptics
-{
-    public struct BufferedRumble
-    {
-        public HapticCapabilities capabilities { get; private set; }
-        InputDevice device { get; set; }
-
-        public BufferedRumble(InputDevice device)
-        {
-            if (device == null)
-                throw new System.ArgumentNullException(nameof(device));
-
-            this.device = device;
-
-            var command = GetHapticCapabilitiesCommand.Create();
-            device.ExecuteCommand(ref command);
-            capabilities = command.capabilities;
-        }
-
-        public void EnqueueRumble(byte[] samples)
-        {
-            var command = SendBufferedHapticCommand.Create(samples);
-            device.ExecuteCommand(ref command);
-        }
-    }
-}
-#endif // UNITY_INPUT_SYSTEM_ENABLE_XR
+version https://git-lfs.github.com/spec/v1
+oid sha256:c5ebb3d4bf08a330e71ec8c9709a16430f46f3f98116336e5484c84371a5a413
+size 892

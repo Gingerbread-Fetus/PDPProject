@@ -1,15 +1,3 @@
-{
-    "name": "Unity.InputSystem.VirtualMouseInput",
-    "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c"
-    ],
-    "optionalUnityReferences": [],
-    "includePlatforms": [],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": []
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:ea8d0797ba7e09b42c060e855cc1b3a673a7e7d64d590f828e7a3481adc7189f
+size 412

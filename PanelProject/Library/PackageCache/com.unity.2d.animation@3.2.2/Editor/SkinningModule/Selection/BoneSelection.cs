@@ -1,24 +1,3 @@
-using System;
-using System.Linq;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace UnityEditor.U2D.Animation
-{
-    [Serializable]
-    internal class BoneSelection : SerializableSelection<BoneCache>, IBoneSelection
-    {
-        protected override BoneCache GetInvalidElement() { return null; }
-
-        public BoneCache root
-        {
-            get { return activeElement.FindRoot<BoneCache>(elements); }
-        }
-
-        public BoneCache[] roots
-        {
-            get { return elements.FindRoots<BoneCache>(); }
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:a2ed5796174dd9bbb896795b2f6d33c18459bc9dda0102cdb0e94ae216faaa27
+size 603

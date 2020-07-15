@@ -1,15 +1,3 @@
-using UnityEngine.InputSystem.Utilities;
-
-namespace UnityEngine.InputSystem.LowLevel
-{
-    // Allows retrieving information about event types from an instance of the type.
-    // As structs can always be default instantiated, this allows us to get data on the struct
-    // from an instance of the struct without having to go through vtable dispatches.
-    /// <summary>
-    /// Interface implemented by all input event structs which reports the data format identifier of the command.
-    /// </summary>
-    public interface IInputEventTypeInfo
-    {
-        FourCC typeStatic { get; }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b005ccc07fc25c7fca37c81694bfa7cc576c39536a15f81119fc2326c9a32a18
+size 609

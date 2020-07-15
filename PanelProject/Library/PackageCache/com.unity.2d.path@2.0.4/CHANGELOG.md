@@ -1,29 +1,3 @@
-# Changelog
-
-## [2.0.4] - 2019-10-27
-### Fixed
-- Added missing meta file
-
-## [2.0.3] - 2019-10-02
-### Fixed
-- Removed resources
-
-## [2.0.2] - 2019-07-24
-### Added
-- Add related test packages
-
-## [2.0.1] - 2019-07-13
-### Changed
-- Mark package to support Unity 2019.3.0a10 onwards.
-
-## [2.0.0] - 2019-06-19
-### Changed.
-- Stable Version.
-
-## [1.0.0-preview.3] - 2019-06-14
-### Fixed
-- Fix undo on select point.
-
-## [1.0.0-preview.1] - 2019-04-22
-### Added
-- Initial Version.
+version https://git-lfs.github.com/spec/v1
+oid sha256:8da49ee122daed0446fefc3ba97f2a6793f04be9cec7d5453f44b8894b1dee1a
+size 501
