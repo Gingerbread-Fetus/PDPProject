@@ -37,6 +37,7 @@ public class CameraController : MonoBehaviour
 
     public void MoveFaster(InputAction.CallbackContext ctx)
     {
+        Debug.Log("Move Faster");
         if (ctx.started)
         {
             moveSpeed *= speedIncreaseFactor;

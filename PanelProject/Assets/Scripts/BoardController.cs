@@ -9,6 +9,7 @@ public class BoardController : MonoBehaviour
 {
     [SerializeField] List<Panel> characterPanels;
     [SerializeField] AudioClip clearEffect;
+    [SerializeField] SelectorBar selector;
     [SerializeField, Tooltip("How far from the top the panels start spawning")] int startingHeight = 6;
     public static BoardController instance;
     public int xSize, ySize;
@@ -80,6 +81,8 @@ public class BoardController : MonoBehaviour
                 previousAbove = newPanel.GetComponent<Panel>();
                 newPanel.GetComponent<Panel>().XGridPos = x;
 
+                if(x == 0 && y == 0) { selector.SetSelected(newPanel); }
+
                 newPanel.name = Enum.GetName(typeof(Panel.PanelType), newPanel.Type) + " " + x + " " + newPanel.transform.position.y;
             }
         }
@@ -124,29 +127,42 @@ public class BoardController : MonoBehaviour
         return nextPanel;
     }
 
-    public void GetClicked(InputAction.CallbackContext ctx)
+    //TODO Remove this later
+    //public void GetClicked(InputAction.CallbackContext ctx)
+    //{
+    //    if (ctx.performed)
+    //    {
+    //        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+    //        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+
+    //        if(hit.collider != null && hit.collider.tag == "Panel")
+    //        {
+    //            Panel clickedPanel = hit.collider.gameObject.GetComponent<Panel>();
+    //            if (!clickedPanel.ActiveState) { return;
+    //            }
+    //            if (selectedPanel == null && !isShifting)
+    //            {
+    //                selectedPanel = hit.collider.gameObject.GetComponent<Panel>();
+    //                selectedPanel.SelectPanel();
+    //            }
+    //            else
+    //            {
+    //                Panel otherPanel = hit.collider.gameObject.GetComponent<Panel>();
+    //                TrySwap(selectedPanel, otherPanel);
+    //            }
+    //        }
+    //    }
+    //}
+
+    public void Switch(InputAction.CallbackContext ctx)
     {
+        Debug.Log("Switch called");
         if (ctx.performed)
         {
-            Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
-
-            if(hit.collider != null && hit.collider.tag == "Panel")
-            {
-                Panel clickedPanel = hit.collider.gameObject.GetComponent<Panel>();
-                if (!clickedPanel.ActiveState) { return;
-                }
-                if (selectedPanel == null && !isShifting)
-                {
-                    selectedPanel = hit.collider.gameObject.GetComponent<Panel>();
-                    selectedPanel.SelectPanel();
-                }
-                else
-                {
-                    Panel otherPanel = hit.collider.gameObject.GetComponent<Panel>();
-                    TrySwap(selectedPanel, otherPanel);
-                }
-            }
+            RaycastHit2D[] hitArray = Physics2D.RaycastAll(selectedPanel.transform.position, Vector2.right);
+            var hit = hitArray[1];
+            Panel otherPanel = hit.collider.GetComponent<Panel>();
+            TrySwap(selectedPanel, otherPanel);
         }
     }
 
@@ -164,7 +180,7 @@ public class BoardController : MonoBehaviour
             StartCoroutine(CheckAllPanels());
         }
         selectedPanel.DeselectPanel();
-        selectedPanel = null;
+        selector.SetSelected(otherPanel);
     }
 
     public IEnumerator CheckAllPanels()
@@ -199,7 +215,6 @@ public class BoardController : MonoBehaviour
 
             foreach (Panel matchedPanel in matchedPanels)
             {
-                //TODO: Make call to particle system here
                 matchedPanel.SetToNull();
             }
             AudioSource.PlayClipAtPoint(clearEffect, Camera.main.transform.position);
