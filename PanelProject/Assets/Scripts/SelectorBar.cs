@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class SelectorBar : MonoBehaviour
 {
-    Panel selectedPanel;
     private Vector3 offset = new Vector3(0.468f, 0, 0);
     BoardController boardController;
 
@@ -17,44 +16,40 @@ public class SelectorBar : MonoBehaviour
 
     public void SetSelected(Panel newPanel)
     {
-        selectedPanel = newPanel;
         transform.position = newPanel.transform.position + offset;
-        selectedPanel.SelectPanel();
-        boardController.SelectedPanel = selectedPanel;
     }
 
     public void MoveSelector(InputAction.CallbackContext ctx)
     {
-        var value = ctx.ReadValue<Vector2>();
         if (ctx.performed)
         {
-            RaycastHit2D[] hitArray = Physics2D.RaycastAll(selectedPanel.transform.position, value);
-            if (hitArray.Length > 1)
+            var value = ctx.ReadValue<Vector2>();
+            RaycastHit2D[] hitArray = Physics2D.RaycastAll(boardController.SelectedPanel.transform.position, value);
+            if(hitArray.Length > 1)
             {
-                RaycastHit2D hit = hitArray[1];
-                Panel hitPanel = hit.collider.GetComponent<Panel>();
-                if (hitPanel.ActiveState && hitPanel.XGridPos <= 4)
+                Panel nextPanel = hitArray[1].collider.GetComponent<Panel>();
+                if (nextPanel.ActiveState && nextPanel.XGridPos <= 4)
                 {
-                    selectedPanel.DeselectPanel();
-                    SetSelected(hitPanel);
+                    SetSelected(nextPanel); 
                 }
-            } 
-        }
-
-    }
-
-    public void MoveDown()
-    {
-        RaycastHit2D[] hitArray = Physics2D.RaycastAll(selectedPanel.transform.position, Vector2.down);
-        if (hitArray.Length > 1)
-        {
-            RaycastHit2D hit = hitArray[1];
-            Panel hitPanel = hit.collider.GetComponent<Panel>();
-            if (hitPanel.ActiveState && hitPanel.XGridPos <= 4)
-            {
-                selectedPanel.DeselectPanel();
-                SetSelected(hitPanel);
             }
         }
     }
+    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Panel"))
+        {
+            Panel hitPanel = collision.GetComponent<Panel>();
+            boardController.SelectedPanel = hitPanel;
+        }
+
+        if (collision.CompareTag("Game Over"))
+        {
+            RaycastHit2D[] hitArray = Physics2D.RaycastAll(boardController.SelectedPanel.transform.position, Vector2.down);
+            Panel panelBelow = hitArray[1].collider.GetComponent<Panel>();
+            SetSelected(panelBelow);
+        }
+    }
+
 }
